@@ -17,7 +17,8 @@
         .slide {
             display: none;
             animation: fadeIn 0.5s;
-            min-height: 500px;
+            width: 100%;
+            padding: 1rem 0;
         }
         .slide.active {
             display: flex;
@@ -29,8 +30,7 @@
         .slide-container {
             width: 100%;
             max-width: 1024px;
-            min-height: 600px;
-            max-height: 80vh;
+            height: 85vh;
             box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
         /* Gemini機能用のスタイル */
@@ -57,6 +57,21 @@
             max-height: 400px;
             overflow: auto;
         }
+        /* スクロールバーのスタイル */
+        .overflow-y-auto::-webkit-scrollbar {
+            width: 8px;
+        }
+        .overflow-y-auto::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+        .overflow-y-auto::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 flex flex-col items-center justify-center min-h-screen p-4">
@@ -64,7 +79,7 @@
     <!-- Slide Container -->
     <div id="presentation" class="bg-white rounded-xl flex flex-col overflow-hidden slide-container">
         <!-- Slide Content Area -->
-        <main class="flex-grow flex flex-col items-center p-8 md:p-16 text-center overflow-auto">
+        <main class="flex-grow flex flex-col items-center p-8 md:p-16 text-center overflow-y-auto" style="max-height: calc(85vh - 8px);">
 
             <!-- Slide 1: Title -->
             <div class="slide active w-full flex-col items-center justify-center min-h-full">
@@ -223,9 +238,9 @@
             </div>
 
             <!-- Slide 8: Actions with Gemini Feature -->
-            <div class="slide w-full flex-col items-center min-h-full">
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-800">5. 結論：わど の具体的なアクション</h2>
-                <div class="mt-4 w-full table-container">
+            <div class="slide w-full flex flex-col items-start space-y-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800 text-center w-full">5. 結論：わど の具体的なアクション</h2>
+                <div class="w-full" style="max-height: 300px; overflow-y: auto;">
                     <table class="w-full text-left border-collapse">
                         <thead class="bg-slate-100">
                             <tr>
@@ -263,9 +278,11 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="gemini-output" class="w-full mt-3 min-h-28 max-h-64 overflow-auto"></div>
-                <div class="mt-2 text-center">
-                    <button id="testApiBtn" class="bg-gray-500 text-white font-bold py-1 px-3 rounded text-xs hover:bg-gray-600">🧪 API接続テスト</button>
+                <div class="w-full space-y-3">
+                    <div id="gemini-output" class="w-full min-h-32 max-h-80 overflow-y-auto bg-gray-50 rounded-lg p-3 border"></div>
+                    <div class="text-center">
+                        <button id="testApiBtn" class="bg-gray-500 text-white font-bold py-2 px-4 rounded text-sm hover:bg-gray-600">🧪 API接続テスト</button>
+                    </div>
                 </div>
             </div>
 
