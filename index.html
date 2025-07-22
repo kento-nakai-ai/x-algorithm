@@ -258,6 +258,9 @@
                     </table>
                 </div>
                 <div id="gemini-output" class="w-full mt-3 h-28"></div>
+                <div class="mt-2 text-center">
+                    <button id="testApiBtn" class="bg-gray-500 text-white font-bold py-1 px-3 rounded text-xs hover:bg-gray-600">🧪 API接続テスト</button>
+                </div>
             </div>
 
             <!-- Slide 9: Summary -->
@@ -347,11 +350,11 @@
 
         // --- Gemini API Feature Logic ---
         const geminiButtons = document.querySelectorAll('.gemini-btn');
-        const outputDiv = document.getElementById('gemini-output');
 
         geminiButtons.forEach(button => {
             button.addEventListener('click', async () => {
                 const actionText = button.dataset.action;
+                const outputDiv = document.getElementById('gemini-output');
                 
                 // Show loading state
                 outputDiv.innerHTML = `
@@ -365,9 +368,15 @@
                 const prompt = `あなたは𝕏運用のプロで、AIマスコットキャラクター「わど」の中の人です。「${actionText}」という𝕏の運用戦略に基づいて、「わど」が投稿するための、エンゲージメントが高まるような具体的なツイート案を1つだけ、日本語で生成してください。ツイートは日本の30〜40代のビジネスパーソンをターゲットとし、彼らが興味を持つような実践的な内容にしてください。絵文字を効果的に使い、親しみやすさも出してください。`;
 
                 try {
-                    // Call Gemini API
+                    // APIキーの検証
                     const apiKey = "AIzaSyA70WR9oceK0WJL9sB-O_NbBbX40hxQBL8";
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+                    
+                    if (!apiKey || apiKey.trim() === "") {
+                        throw new Error("APIキーが設定されていません");
+                    }
+                    
+                    // より確実なエンドポイントを使用
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
                     
                     const payload = {
                         contents: [
@@ -381,35 +390,81 @@
                             }
                         ],
                         generationConfig: {
-                            temperature: 0.8,
-                            topK: 40,
-                            topP: 0.95,
-                            maxOutputTokens: 1024,
-                        }
+                            temperature: 0.7,
+                            topK: 20,
+                            topP: 0.8,
+                            maxOutputTokens: 512,
+                            stopSequences: []
+                        },
+                        safetySettings: [
+                            {
+                                category: "HARM_CATEGORY_HARASSMENT",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                            },
+                            {
+                                category: "HARM_CATEGORY_HATE_SPEECH",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                            },
+                            {
+                                category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                            },
+                            {
+                                category: "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                            }
+                        ]
                     };
+                    
+                    console.log('Making API request to:', apiUrl);
+                    console.log('Request payload:', JSON.stringify(payload, null, 2));
                     
                     const response = await fetch(apiUrl, {
                         method: 'POST',
                         headers: { 
                             'Content-Type': 'application/json',
+                            'x-goog-api-key': apiKey
                         },
                         body: JSON.stringify(payload)
                     });
 
+                    console.log('Response status:', response.status);
+                    console.log('Response headers:', response.headers);
+
+                    const responseText = await response.text();
+                    console.log('Raw response:', responseText);
+
                     if (!response.ok) {
-                        const errorData = await response.text();
-                        console.error('API Error Details:', errorData);
-                        throw new Error(`API error: ${response.status} ${response.statusText} - ${errorData}`);
+                        let errorMessage = `API error: ${response.status} ${response.statusText}`;
+                        try {
+                            const errorData = JSON.parse(responseText);
+                            if (errorData.error && errorData.error.message) {
+                                errorMessage += ` - ${errorData.error.message}`;
+                            }
+                        } catch (e) {
+                            errorMessage += ` - ${responseText}`;
+                        }
+                        throw new Error(errorMessage);
                     }
 
-                    const result = await response.json();
-                    console.log('API Response:', result);
+                    const result = JSON.parse(responseText);
+                    console.log('Parsed API Response:', result);
                     
                     let generatedText = "アイデアを生成できませんでした。";
-                    if (result.candidates && result.candidates.length > 0 &&
-                        result.candidates[0].content && result.candidates[0].content.parts &&
-                        result.candidates[0].content.parts.length > 0) {
-                        generatedText = result.candidates[0].content.parts[0].text;
+                    
+                    if (result.candidates && result.candidates.length > 0) {
+                        const candidate = result.candidates[0];
+                        if (candidate.content && candidate.content.parts && candidate.content.parts.length > 0) {
+                            generatedText = candidate.content.parts[0].text;
+                        } else if (candidate.finishReason === "SAFETY") {
+                            generatedText = "安全上の理由により、このリクエストに対する応答を生成できませんでした。別の内容でお試しください。";
+                        } else {
+                            generatedText = `応答を生成できませんでした（理由: ${candidate.finishReason || 'UNKNOWN'}）`;
+                        }
+                    } else if (result.promptFeedback) {
+                        if (result.promptFeedback.blockReason) {
+                            generatedText = `プロンプトがブロックされました（理由: ${result.promptFeedback.blockReason}）`;
+                        }
                     }
 
                     // Display the result in a tweet-like preview
@@ -429,19 +484,35 @@
                 } catch (error) {
                     console.error('Error calling Gemini API:', error);
                     let errorMessage = error.message;
+                    let showFallback = false;
                     
                     // より分かりやすいエラーメッセージに変換
                     if (error.message.includes('403')) {
-                        errorMessage = 'APIキーが無効です。正しいAPIキーを設定してください。';
+                        errorMessage = 'APIアクセスが拒否されました。APIキーの権限を確認してください。';
+                        showFallback = true;
                     } else if (error.message.includes('429')) {
                         errorMessage = 'API使用量の上限に達しました。しばらく待ってから再試行してください。';
+                        showFallback = true;
                     } else if (error.message.includes('400')) {
                         errorMessage = 'リクエストの形式が不正です。';
                     } else if (error.message.includes('NetworkError') || error.message.includes('Failed to fetch')) {
                         errorMessage = 'ネットワークエラーが発生しました。インターネット接続を確認してください。';
+                        showFallback = true;
+                    } else if (error.message.includes('API_KEY_INVALID')) {
+                        errorMessage = 'APIキーが無効です。正しいAPIキーを設定してください。';
+                        showFallback = true;
                     }
                     
-                    outputDiv.innerHTML = `
+                    // フォールバック用のサンプルツイート
+                    const fallbackTweets = {
+                        "① 会話を始めよう": "💬 AIツールを使いこなすコツ、知りたくありませんか？\n\n実は多くの人が「何を質問していいかわからない」と悩んでいます。\n\n効果的なプロンプトの3つのポイント：\n✅ 具体的な状況を伝える\n✅ 求める結果を明確にする  \n✅ 制約条件も含める\n\nどんなAIツールで困っていますか？🤔",
+                        "② 滞在時間を意識しよう": "🧵 【図解】ChatGPTの回答品質を3倍上げる方法\n\n多くの人がやってしまう❌：\n「資料作って」\n\n効果的な✅：\n「新人研修用のExcel講座資料を、30分のセミナー形式で、初心者でもわかるように作成してください。目標は基本操作の習得です」\n\n違いがわかりますか？\n\n続きは次のツイートで→",
+                        "③ 𝕏内で価値を完結させよう": "🎯 𝕏だけで完結するAI活用術\n\n外部リンクに頼らず、ここで価値提供💡\n\n✨ 今すぐ使えるプロンプト集\n「〜について、3つのポイントで教えて」\n「〜のメリット・デメリットを表で整理して」\n「〜を初心者向けに例え話で説明して」\n\nどれを試してみたいですか？\nリプライで教えてください！",
+                        "④ 質で勝負しよう": "🚀 AI×ビジネスの最前線\n\n2024年、生産性が10倍になったタスク：\n📊 データ分析：Excel→ChatGPT\n✍️ 文書作成：Word→Claude\n🎨 画像生成：Photoshop→Midjourney\n🔍 調査業務：Google→Perplexity\n\nでも一番大切なのは「何を作るか」を決める人間の思考力。\n\nAIに任せられないタスクって何だと思いますか？",
+                        "⑤ コミュニティを形成しよう": "🎙️ 来週のXスペース予告\n\n「AI初心者が30日で業務効率化マスターになる方法」\n\n📅 日時：○月○日 20:00〜\n🎯 対象：AI活用に興味がある方\n💡 内容：\n・実際の成功事例紹介\n・よくある失敗パターン\n・Q&Aセッション\n\n参加してみたい方は🙋‍♂️でリアクションください！\n通知設定もお忘れなく🔔"
+                    };
+                    
+                    let content = `
                         <div class="text-red-500 p-4 bg-red-100 rounded-lg">
                             <p class="font-bold">エラーが発生しました</p>
                             <p class="text-sm mt-1">${errorMessage}</p>
@@ -451,8 +522,103 @@
                             </details>
                         </div>
                     `;
+                    
+                    if (showFallback && fallbackTweets[actionText]) {
+                        content += `
+                            <div class="tweet-preview bg-white w-full mt-3">
+                                <div class="bg-blue-50 p-2 rounded-t-lg">
+                                    <p class="text-xs text-blue-600 font-medium">💡 サンプルツイート案（フォールバック）</p>
+                                </div>
+                                <div class="p-3">
+                                    <div class="flex items-center">
+                                        <img src="https://placehold.co/48x48/E2E8F0/475569?text=W" class="rounded-full" alt="わどアイコン">
+                                        <div class="ml-3">
+                                            <p class="font-bold">わど@AI界隈のマスコット</p>
+                                            <p class="text-sm text-slate-500">@wad0427</p>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 text-base">${fallbackTweets[actionText]}</p>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    outputDiv.innerHTML = content;
                 }
             });
+        });
+
+        // API Test Function
+        const testApiBtn = document.getElementById('testApiBtn');
+        const outputDiv = document.getElementById('gemini-output');
+        
+        testApiBtn.addEventListener('click', async () => {
+            outputDiv.innerHTML = `
+                <div class="flex items-center justify-center w-full h-full">
+                    <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-500"></div>
+                    <p class="ml-3 text-slate-500 text-sm">API接続をテスト中...</p>
+                </div>
+            `;
+            
+            try {
+                const apiKey = "AIzaSyA70WR9oceK0WJL9sB-O_NbBbX40hxQBL8";
+                const testUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
+                
+                const testPayload = {
+                    contents: [
+                        {
+                            role: "user",
+                            parts: [{ text: "こんにちは" }]
+                        }
+                    ],
+                    generationConfig: {
+                        temperature: 0.5,
+                        maxOutputTokens: 50
+                    }
+                };
+                
+                const response = await fetch(testUrl, {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'x-goog-api-key': apiKey
+                    },
+                    body: JSON.stringify(testPayload)
+                });
+                
+                const responseText = await response.text();
+                
+                if (response.ok) {
+                    outputDiv.innerHTML = `
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-3 py-2 rounded text-sm">
+                            <p class="font-bold">✅ API接続成功</p>
+                            <p class="text-xs mt-1">ステータス: ${response.status}</p>
+                            <details class="mt-1">
+                                <summary class="cursor-pointer text-xs">レスポンス詳細</summary>
+                                <pre class="text-xs mt-1 overflow-auto max-h-20">${responseText}</pre>
+                            </details>
+                        </div>
+                    `;
+                } else {
+                    outputDiv.innerHTML = `
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-3 py-2 rounded text-sm">
+                            <p class="font-bold">❌ API接続失敗</p>
+                            <p class="text-xs mt-1">ステータス: ${response.status} ${response.statusText}</p>
+                            <details class="mt-1">
+                                <summary class="cursor-pointer text-xs">エラー詳細</summary>
+                                <pre class="text-xs mt-1 overflow-auto max-h-20">${responseText}</pre>
+                            </details>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                outputDiv.innerHTML = `
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-3 py-2 rounded text-sm">
+                        <p class="font-bold">🚫 テスト失敗</p>
+                        <p class="text-xs mt-1">${error.message}</p>
+                    </div>
+                `;
+            }
         });
 
         // Initialize the first slide
