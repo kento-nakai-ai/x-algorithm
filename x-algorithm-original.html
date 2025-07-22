@@ -17,6 +17,7 @@
         .slide {
             display: none;
             animation: fadeIn 0.5s;
+            min-height: 500px;
         }
         .slide.active {
             display: flex;
@@ -28,7 +29,8 @@
         .slide-container {
             width: 100%;
             max-width: 1024px;
-            aspect-ratio: 16 / 9;
+            min-height: 600px;
+            max-height: 80vh;
             box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
         }
         /* Gemini機能用のスタイル */
@@ -51,6 +53,10 @@
             white-space: pre-wrap;
             word-wrap: break-word;
         }
+        .table-container {
+            max-height: 400px;
+            overflow: auto;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 flex flex-col items-center justify-center min-h-screen p-4">
@@ -58,17 +64,17 @@
     <!-- Slide Container -->
     <div id="presentation" class="bg-white rounded-xl flex flex-col overflow-hidden slide-container">
         <!-- Slide Content Area -->
-        <main class="flex-grow flex flex-col items-center justify-center p-8 md:p-16 text-center">
+        <main class="flex-grow flex flex-col items-center p-8 md:p-16 text-center overflow-auto">
 
             <!-- Slide 1: Title -->
-            <div class="slide active w-full h-full flex-col items-center justify-center">
+            <div class="slide active w-full flex-col items-center justify-center min-h-full">
                 <h1 class="text-4xl md:text-6xl font-bold text-sky-600 tracking-tight">𝕏最新アルゴリズム徹底解説</h1>
                 <p class="mt-4 text-lg md:text-2xl text-slate-600">〜アカウントのポテンシャルを最大化する運用戦略〜</p>
                 <p class="mt-12 text-base text-slate-500">わど@AI界隈のマスコット 運用チーム向け</p>
             </div>
 
             <!-- Slide 2: Agenda -->
-            <div class="slide w-full h-full flex-col items-center justify-center text-left">
+            <div class="slide w-full flex-col items-center justify-center text-left min-h-full">
                 <h2 class="text-3xl md:text-5xl font-bold text-slate-800 self-start">Agenda</h2>
                 <ol class="mt-8 text-xl md:text-2xl list-decimal list-inside space-y-4 text-slate-700">
                     <li>𝕏の最終目的：なぜアルゴリズムを理解する必要があるのか？</li>
@@ -80,7 +86,7 @@
             </div>
 
             <!-- Slide 3: Goal -->
-            <div class="slide w-full h-full flex-col items-center justify-center">
+            <div class="slide w-full flex-col items-center justify-center min-h-full">
                 <h2 class="text-3xl md:text-5xl font-bold text-slate-800">1. 𝕏の最終目的</h2>
                 <p class="mt-6 text-2xl md:text-4xl font-bold text-sky-600">すべては「良質な滞在時間」のために</p>
                 <blockquote class="mt-8 p-6 bg-slate-100 rounded-lg border-l-4 border-sky-500 text-left">
@@ -96,7 +102,7 @@
             </div>
             
             <!-- Slide 4: 3 Steps -->
-            <div class="slide w-full h-full flex-col items-center justify-center">
+            <div class="slide w-full flex-col items-center justify-center min-h-full">
                  <h2 class="text-3xl md:text-5xl font-bold text-slate-800">2. あなたの投稿が「おすすめ」に載るまで</h2>
                  <div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-4 w-full">
                     <div class="bg-sky-100 text-sky-800 p-6 rounded-lg text-center flex-1">
@@ -119,9 +125,9 @@
             </div>
 
             <!-- Slide 5: DOs -->
-            <div class="slide w-full h-full flex-col items-center justify-center">
+            <div class="slide w-full flex-col items-center min-h-full">
                 <h2 class="text-3xl md:text-5xl font-bold text-slate-800">3. これをやれば評価が上がる！</h2>
-                <div class="mt-6 w-full overflow-x-auto">
+                <div class="mt-6 w-full table-container">
                     <table class="w-full text-left border-collapse">
                         <thead class="bg-slate-100">
                             <tr>
@@ -158,9 +164,9 @@
             </div>
 
             <!-- Slide 6: DON'Ts -->
-            <div class="slide w-full h-full flex-col items-center justify-center">
+            <div class="slide w-full flex-col items-center min-h-full">
                 <h2 class="text-3xl md:text-5xl font-bold text-slate-800">3. これをやると評価が下がる！</h2>
-                <div class="mt-6 w-full overflow-x-auto">
+                <div class="mt-6 w-full table-container">
                     <table class="w-full text-left border-collapse">
                         <thead class="bg-slate-100">
                             <tr>
@@ -197,7 +203,7 @@
             </div>
 
             <!-- Slide 7: Game Changers -->
-            <div class="slide w-full h-full flex-col items-center justify-center">
+            <div class="slide w-full flex-col items-center justify-center min-h-full">
                 <h2 class="text-3xl md:text-5xl font-bold text-slate-800">4. 2025年のゲームチェンジャー</h2>
                 <p class="mt-2 text-lg text-slate-600">攻略必須の3大トレンド</p>
                 <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 w-full text-left">
@@ -217,9 +223,9 @@
             </div>
 
             <!-- Slide 8: Actions with Gemini Feature -->
-            <div class="slide w-full h-full flex-col items-center justify-center">
+            <div class="slide w-full flex-col items-center min-h-full">
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-800">5. 結論：わど の具体的なアクション</h2>
-                <div class="mt-4 w-full overflow-x-auto">
+                <div class="mt-4 w-full table-container">
                     <table class="w-full text-left border-collapse">
                         <thead class="bg-slate-100">
                             <tr>
@@ -257,14 +263,14 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="gemini-output" class="w-full mt-3 h-28"></div>
+                <div id="gemini-output" class="w-full mt-3 min-h-28 max-h-64 overflow-auto"></div>
                 <div class="mt-2 text-center">
                     <button id="testApiBtn" class="bg-gray-500 text-white font-bold py-1 px-3 rounded text-xs hover:bg-gray-600">🧪 API接続テスト</button>
                 </div>
             </div>
 
             <!-- Slide 9: Summary -->
-            <div class="slide w-full h-full flex-col items-center justify-center text-left">
+            <div class="slide w-full flex-col items-center justify-center text-left min-h-full">
                 <h2 class="text-3xl md:text-5xl font-bold text-slate-800 self-start">Key Takeaways</h2>
                 <ul class="mt-8 space-y-4 text-xl md:text-2xl text-slate-700">
                     <li class="flex items-start"><span class="text-sky-500 mr-3">✔</span><div><strong>目的は「後悔のない滞在時間」</strong><br><span class="text-base">ユーザーが「見てよかった」と思う有益なコンテンツを。</span></div></li>
@@ -276,7 +282,7 @@
             </div>
 
             <!-- Slide 10: Q&A -->
-            <div class="slide w-full h-full flex-col items-center justify-center">
+            <div class="slide w-full flex-col items-center justify-center min-h-full">
                 <h2 class="text-4xl md:text-6xl font-bold text-slate-800">ご清聴ありがとうございました</h2>
                 <p class="mt-8 text-xl md:text-2xl text-slate-600">質疑応答 / Next Step</p>
             </div>
