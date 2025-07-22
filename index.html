@@ -366,22 +366,44 @@
 
                 try {
                     // Call Gemini API
-                    let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-                    const payload = { contents: chatHistory };
-                    const apiKey = ""; // APIキーは空のままにします
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                    const apiKey = "AIzaSyA70WR9oceK0WJL9sB-O_NbBbX40hxQBL8";
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+                    
+                    const payload = {
+                        contents: [
+                            {
+                                role: "user",
+                                parts: [
+                                    {
+                                        text: prompt
+                                    }
+                                ]
+                            }
+                        ],
+                        generationConfig: {
+                            temperature: 0.8,
+                            topK: 40,
+                            topP: 0.95,
+                            maxOutputTokens: 1024,
+                        }
+                    };
                     
                     const response = await fetch(apiUrl, {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: { 
+                            'Content-Type': 'application/json',
+                        },
                         body: JSON.stringify(payload)
                     });
 
                     if (!response.ok) {
-                        throw new Error(`API error: ${response.statusText}`);
+                        const errorData = await response.text();
+                        console.error('API Error Details:', errorData);
+                        throw new Error(`API error: ${response.status} ${response.statusText} - ${errorData}`);
                     }
 
                     const result = await response.json();
+                    console.log('API Response:', result);
                     
                     let generatedText = "アイデアを生成できませんでした。";
                     if (result.candidates && result.candidates.length > 0 &&
@@ -406,9 +428,27 @@
 
                 } catch (error) {
                     console.error('Error calling Gemini API:', error);
+                    let errorMessage = error.message;
+                    
+                    // より分かりやすいエラーメッセージに変換
+                    if (error.message.includes('403')) {
+                        errorMessage = 'APIキーが無効です。正しいAPIキーを設定してください。';
+                    } else if (error.message.includes('429')) {
+                        errorMessage = 'API使用量の上限に達しました。しばらく待ってから再試行してください。';
+                    } else if (error.message.includes('400')) {
+                        errorMessage = 'リクエストの形式が不正です。';
+                    } else if (error.message.includes('NetworkError') || error.message.includes('Failed to fetch')) {
+                        errorMessage = 'ネットワークエラーが発生しました。インターネット接続を確認してください。';
+                    }
+                    
                     outputDiv.innerHTML = `
                         <div class="text-red-500 p-4 bg-red-100 rounded-lg">
-                            エラーが発生しました: ${error.message}
+                            <p class="font-bold">エラーが発生しました</p>
+                            <p class="text-sm mt-1">${errorMessage}</p>
+                            <details class="mt-2">
+                                <summary class="cursor-pointer text-xs text-red-400">詳細情報</summary>
+                                <pre class="text-xs mt-1 overflow-auto">${error.message}</pre>
+                            </details>
                         </div>
                     `;
                 }
