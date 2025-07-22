@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【Webページ版】𝕏最新アルゴリズム徹底解説スライド (Gemini機能搭載)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .slide {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        .slide.active {
+            display: flex;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-container {
+            width: 100%;
+            max-width: 1024px;
+            aspect-ratio: 16 / 9;
+            box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        /* Gemini機能用のスタイル */
+        .gemini-btn {
+            background: linear-gradient(135deg, #4285F4, #9B59B6, #F4B400, #0F9D58);
+            background-size: 400% 400%;
+            animation: gradient 10s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .tweet-preview {
+            border: 1px solid #e5e7eb;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin-top: 1rem;
+            text-align: left;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col items-center justify-center min-h-screen p-4">
+
+    <!-- Slide Container -->
+    <div id="presentation" class="bg-white rounded-xl flex flex-col overflow-hidden slide-container">
+        <!-- Slide Content Area -->
+        <main class="flex-grow flex flex-col items-center justify-center p-8 md:p-16 text-center">
+
+            <!-- Slide 1: Title -->
+            <div class="slide active w-full h-full flex-col items-center justify-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-sky-600 tracking-tight">𝕏最新アルゴリズム徹底解説</h1>
+                <p class="mt-4 text-lg md:text-2xl text-slate-600">〜アカウントのポテンシャルを最大化する運用戦略〜</p>
+                <p class="mt-12 text-base text-slate-500">わど@AI界隈のマスコット 運用チーム向け</p>
+            </div>
+
+            <!-- Slide 2: Agenda -->
+            <div class="slide w-full h-full flex-col items-center justify-center text-left">
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-800 self-start">Agenda</h2>
+                <ol class="mt-8 text-xl md:text-2xl list-decimal list-inside space-y-4 text-slate-700">
+                    <li>𝕏の最終目的：なぜアルゴリズムを理解する必要があるのか？</li>
+                    <li>アルゴリズムの3ステップ：あなたの投稿はユーザーにどう届くか</li>
+                    <li>最重要シグナル：何が評価され、何が評価されないのか</li>
+                    <li>2025年のゲームチェンジャー：攻略必須の3大トレンド</li>
+                    <li>結論：我々が取るべき具体的なアクション</li>
+                </ol>
+            </div>
+
+            <!-- Slide 3: Goal -->
+            <div class="slide w-full h-full flex-col items-center justify-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-800">1. 𝕏の最終目的</h2>
+                <p class="mt-6 text-2xl md:text-4xl font-bold text-sky-600">すべては「良質な滞在時間」のために</p>
+                <blockquote class="mt-8 p-6 bg-slate-100 rounded-lg border-l-4 border-sky-500 text-left">
+                    <p class="text-lg md:text-xl italic text-slate-700">“Goal is to maximize unregretted user-seconds.”</p>
+                    <p class="mt-2 text-base text-slate-600">（ゴールは、後悔のないユーザーの滞在時間を最大化することだ）</p>
+                    <footer class="mt-2 text-right text-sm text-slate-500">— イーロン・マスク</footer>
+                </blockquote>
+                <ul class="mt-8 text-left list-disc list-inside space-y-2 text-lg text-slate-600">
+                    <li>単なる滞在時間ではなく<span class="font-bold text-sky-700">「見てよかった」</span>と思える時間。</li>
+                    <li>炎上やネガティブな話題は「後悔のない時間」にはならない。</li>
+                    <li>アルゴリズムは<span class="font-bold">「有益で、面白く、会話が弾む」</span>コンテンツを最優先する。</li>
+                </ul>
+            </div>
+            
+            <!-- Slide 4: 3 Steps -->
+            <div class="slide w-full h-full flex-col items-center justify-center">
+                 <h2 class="text-3xl md:text-5xl font-bold text-slate-800">2. あなたの投稿が「おすすめ」に載るまで</h2>
+                 <div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-4 w-full">
+                    <div class="bg-sky-100 text-sky-800 p-6 rounded-lg text-center flex-1">
+                        <h3 class="font-bold text-xl">Step 1: 候補選定</h3>
+                        <p class="mt-2 text-base">約1,500件の投稿をピックアップ</p>
+                    </div>
+                    <svg class="w-8 h-8 text-slate-400 hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                     <svg class="w-8 h-8 text-slate-400 md:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 17l-4 4m0 0l-4-4m4 4V3"></path></svg>
+                    <div class="bg-sky-100 text-sky-800 p-6 rounded-lg text-center flex-1">
+                        <h3 class="font-bold text-xl">Step 2: ランク付け</h3>
+                        <p class="mt-2 text-base">エンゲージメント等でスコアリング</p>
+                    </div>
+                    <svg class="w-8 h-8 text-slate-400 hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    <svg class="w-8 h-8 text-slate-400 md:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 17l-4 4m0 0l-4-4m4 4V3"></path></svg>
+                    <div class="bg-sky-100 text-sky-800 p-6 rounded-lg text-center flex-1">
+                        <h3 class="font-bold text-xl">Step 3: フィルター</h3>
+                        <p class="mt-2 text-base">不適切コンテンツ等を除外し表示</p>
+                    </div>
+                 </div>
+            </div>
+
+            <!-- Slide 5: DOs -->
+            <div class="slide w-full h-full flex-col items-center justify-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-800">3. これをやれば評価が上がる！</h2>
+                <div class="mt-6 w-full overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-slate-100">
+                            <tr>
+                                <th class="p-3 text-lg font-bold">評価レベル</th>
+                                <th class="p-3 text-lg font-bold">アクション</th>
+                                <th class="p-3 text-lg font-bold">具体的な運用</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-3 font-bold text-sky-600">🚀 最大ブースト</td>
+                                <td class="p-3 font-bold">リプライへのエンゲージ</td>
+                                <td class="p-3">自分の投稿に来たリプライにさらに反応がつく状態。「会話の盛り上がり」が最高の評価。</td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-3 font-bold text-sky-600">🏆 高評価</td>
+                                <td class="p-3 font-bold">リプライ（返信）</td>
+                                <td class="p-3">投稿に返信すること自体が高い評価。大手アカウントへの質の高いリプライも含む。</td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-3 font-bold text-sky-600">👍 高評価</td>
+                                <td class="p-3 font-bold">投稿の長時間閲覧</td>
+                                <td class="p-3">ユーザーが投稿を2分以上滞在して閲覧する。スレッドや動画が極めて有効。</td>
+                            </tr>
+                             <tr class="border-b border-slate-200">
+                                <td class="p-3 font-bold text-green-600">✅ 加点</td>
+                                <td class="p-3 font-bold">その他</td>
+                                <td class="p-3">プロフィールクリック、リポスト、いいねなど。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-4 text-lg font-bold">結論：「リポスト」や「いいね」を稼ぐより、「会話」と「滞在時間」を生み出すことが重要。</p>
+            </div>
+
+            <!-- Slide 6: DON'Ts -->
+            <div class="slide w-full h-full flex-col items-center justify-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-800">3. これをやると評価が下がる！</h2>
+                <div class="mt-6 w-full overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-slate-100">
+                            <tr>
+                                <th class="p-3 text-lg font-bold">評価レベル</th>
+                                <th class="p-3 text-lg font-bold">アクション</th>
+                                <th class="p-3 text-lg font-bold">具体的な運用上の注意</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-3 font-bold text-red-600">🚫 絶対NG</td>
+                                <td class="p-3 font-bold">通報される</td>
+                                <td class="p-3">スパムや攻撃的な内容は表示されない。</td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-3 font-bold text-red-600">💣 大幅減点</td>
+                                <td class="p-3 font-bold">ネガティブフィードバック</td>
+                                <td class="p-3">「興味がない」報告、ミュート、ブロック。炎上や無関係な投稿は命取り。</td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-3 font-bold text-orange-500">⚠️ 減点</td>
+                                <td class="p-3 font-bold">外部リンクのクリック</td>
+                                <td class="p-3">ユーザーが𝕏の外部に離脱する行為。リーチが明確に抑制される。</td>
+                            </tr>
+                             <tr class="border-b border-slate-200">
+                                <td class="p-3 font-bold text-orange-500">⚠️ 注意</td>
+                                <td class="p-3 font-bold">ハッシュタグの乱用</td>
+                                <td class="p-3">関連性のない、または多すぎるハッシュタグ（3つ以上）はスパム判定の可能性。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-4 text-lg font-bold">結論：ユーザーを𝕏の外に誘導する行為は避ける。「有益な情報」は𝕏内で完結させる。</p>
+            </div>
+
+            <!-- Slide 7: Game Changers -->
+            <div class="slide w-full h-full flex-col items-center justify-center">
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-800">4. 2025年のゲームチェンジャー</h2>
+                <p class="mt-2 text-lg text-slate-600">攻略必須の3大トレンド</p>
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 w-full text-left">
+                    <div class="bg-slate-100 p-6 rounded-lg">
+                        <h3 class="font-bold text-xl text-sky-700">① Grok AIによる「質」の評価</h3>
+                        <p class="mt-2 text-slate-600">AIが投稿内容を理解し、フォロワー数に関係なく質の高い投稿（Banger Posts）を発掘。専門性が評価される時代へ。</p>
+                    </div>
+                    <div class="bg-slate-100 p-6 rounded-lg">
+                        <h3 class="font-bold text-xl text-sky-700">② 「動画」と「コミュニティ」</h3>
+                        <p class="mt-2 text-slate-600">滞在時間を伸ばす「動画」、濃い交流を生む「スペース」「コミュニティ」の価値が急上昇。</p>
+                    </div>
+                    <div class="bg-slate-100 p-6 rounded-lg">
+                        <h3 class="font-bold text-xl text-sky-700">③ 小規模アカウントの逆転劇</h3>
+                        <p class="mt-2 text-slate-600">Grok導入により、ニッチで専門性の高いアカウントが正しく評価され、リーチを伸ばすチャンスが拡大。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Actions with Gemini Feature -->
+            <div class="slide w-full h-full flex-col items-center justify-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800">5. 結論：わど の具体的なアクション</h2>
+                <div class="mt-4 w-full overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-slate-100">
+                            <tr>
+                                <th class="p-2 text-base font-bold">アルゴリズムの教え</th>
+                                <th class="p-2 text-base font-bold">わど の具体的なアクションプラン</th>
+                                <th class="p-2 text-base font-bold">Gemini AI アシスタント</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-2 font-bold">① 会話を始めよう</td>
+                                <td class="p-2">全ての投稿に「問いかけ」を入れ、来たリプライには100%返信する。</td>
+                                <td class="p-2"><button class="gemini-btn text-white font-bold py-2 px-3 rounded-lg text-sm" data-action="① 会話を始めよう">✨ アイデアを生成</button></td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-2 font-bold">② 滞在時間を意識しよう</td>
+                                <td class="p-2">週1本以上、解説スレッド・図解・ショート動画等のリッチコンテンツを投稿する。</td>
+                                <td class="p-2"><button class="gemini-btn text-white font-bold py-2 px-3 rounded-lg text-sm" data-action="② 滞在時間を意識しよう">✨ アイデアを生成</button></td>
+                            </tr>
+                            <tr class="border-b border-slate-200">
+                                <td class="p-2 font-bold">③ 𝕏内で価値を完結させよう</td>
+                                <td class="p-2">LINE誘導は、有益な投稿のリプライ欄に限定する。</td>
+                                <td class="p-2"><button class="gemini-btn text-white font-bold py-2 px-3 rounded-lg text-sm" data-action="③ 𝕏内で価値を完結させよう">✨ アイデアを生成</button></td>
+                            </tr>
+                             <tr class="border-b border-slate-200">
+                                <td class="p-2 font-bold">④ 質で勝負しよう</td>
+                                <td class="p-2">「AI×ビジネス」領域で誰よりも分かりやすく、実践的な情報を届けることに集中する。</td>
+                                <td class="p-2"><button class="gemini-btn text-white font-bold py-2 px-3 rounded-lg text-sm" data-action="④ 質で勝負しよう">✨ アイデアを生成</button></td>
+                            </tr>
+                             <tr class="border-b border-slate-200">
+                                <td class="p-2 font-bold">⑤ コミュニティを形成しよう</td>
+                                <td class="p-2">月1回以上Xスペースを開催し、フォロワーとの直接的な交流機会を設ける。</td>
+                                <td class="p-2"><button class="gemini-btn text-white font-bold py-2 px-3 rounded-lg text-sm" data-action="⑤ コミュニティを形成しよう">✨ アイデアを生成</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="gemini-output" class="w-full mt-3 h-28"></div>
+                <div class="mt-2 text-center">
+                    <button id="testApiBtn" class="bg-gray-500 text-white font-bold py-1 px-3 rounded text-xs hover:bg-gray-600">🧪 API接続テスト</button>
+                </div>
+            </div>
+
+            <!-- Slide 9: Summary -->
+            <div class="slide w-full h-full flex-col items-center justify-center text-left">
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-800 self-start">Key Takeaways</h2>
+                <ul class="mt-8 space-y-4 text-xl md:text-2xl text-slate-700">
+                    <li class="flex items-start"><span class="text-sky-500 mr-3">✔</span><div><strong>目的は「後悔のない滞在時間」</strong><br><span class="text-base">ユーザーが「見てよかった」と思う有益なコンテンツを。</span></div></li>
+                    <li class="flex items-start"><span class="text-sky-500 mr-3">✔</span><div><strong>最強の武器は「会話」</strong><br><span class="text-base">いいね・リポストより、リプライの質と量を追求する。</span></div></li>
+                    <li class="flex items-start"><span class="text-sky-500 mr-3">✔</span><div><strong>滞在時間を伸ばす工夫を</strong><br><span class="text-base">スレッド、動画、図解を積極的に活用する。</span></div></li>
+                    <li class="flex items-start"><span class="text-sky-500 mr-3">✔</span><div><strong>外部リンクはリプライ欄へ</strong><br><span class="text-base">アルゴリズムのペナルティを賢く回避する。</span></div></li>
+                    <li class="flex items-start"><span class="text-sky-500 mr-3">✔</span><div><strong>「質」は「数」を超える</strong><br><span class="text-base">Grok AI時代、専門性と一貫性が最大の武器になる。</span></div></li>
+                </ul>
+            </div>
+
+            <!-- Slide 10: Q&A -->
+            <div class="slide w-full h-full flex-col items-center justify-center">
+                <h2 class="text-4xl md:text-6xl font-bold text-slate-800">ご清聴ありがとうございました</h2>
+                <p class="mt-8 text-xl md:text-2xl text-slate-600">質疑応答 / Next Step</p>
+            </div>
+        </main>
+
+        <!-- Progress Bar -->
+        <div class="w-full bg-slate-200 h-2">
+            <div id="progressBar" class="bg-sky-500 h-2 transition-all duration-300"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="mt-6 flex items-center justify-center gap-4 w-full max-w-md">
+        <button id="prevBtn" class="bg-white px-6 py-3 rounded-lg shadow-md hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            前へ
+        </button>
+        <div id="slideCounter" class="text-slate-600 font-medium">1 / 10</div>
+        <button id="nextBtn" class="bg-sky-500 text-white px-6 py-3 rounded-lg shadow-md hover:bg-sky-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2">
+            次へ
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </button>
+    </div>
+
+    <script>
+        // --- Presentation Logic ---
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideCounter = document.getElementById('slideCounter');
+        const progressBar = document.getElementById('progressBar');
+        
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            updateUI();
+        }
+
+        function updateUI() {
+            slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            const progressPercentage = ((currentSlide + 1) / totalSlides) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === totalSlides - 1;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextBtn.click();
+            } else if (e.key === 'ArrowLeft') {
+                prevBtn.click();
+            }
+        });
+
+        // --- Gemini API Feature Logic ---
+        const geminiButtons = document.querySelectorAll('.gemini-btn');
+
+        geminiButtons.forEach(button => {
+            button.addEventListener('click', async () => {
+                const actionText = button.dataset.action;
+                
+                // Show loading state
+                outputDiv.innerHTML = `
+                    <div class="flex items-center justify-center w-full h-full">
+                        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-sky-500"></div>
+                        <p class="ml-3 text-slate-500">アイデアを生成中...</p>
+                    </div>
+                `;
+
+                // Construct the prompt
+                const prompt = `あなたは𝕏運用のプロで、AIマスコットキャラクター「わど」の中の人です。「${actionText}」という𝕏の運用戦略に基づいて、「わど」が投稿するための、エンゲージメントが高まるような具体的なツイート案を1つだけ、日本語で生成してください。ツイートは日本の30〜40代のビジネスパーソンをターゲットとし、彼らが興味を持つような実践的な内容にしてください。絵文字を効果的に使い、親しみやすさも出してください。`;
+
+                try {
+                    // APIキーの検証
+                    const apiKey = "AIzaSyA70WR9oceK0WJL9sB-O_NbBbX40hxQBL8";
+                    
+                    if (!apiKey || apiKey.trim() === "") {
+                        throw new Error("APIキーが設定されていません");
+                    }
+                    
+                    // より確実なエンドポイントを使用
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
+                    
+                    const payload = {
+                        contents: [
+                            {
+                                role: "user",
+                                parts: [
+                                    {
+                                        text: prompt
+                                    }
+                                ]
+                            }
+                        ],
+                        generationConfig: {
+                            temperature: 0.7,
+                            topK: 20,
+                            topP: 0.8,
+                            maxOutputTokens: 512,
+                            stopSequences: []
+                        },
+                        safetySettings: [
+                            {
+                                category: "HARM_CATEGORY_HARASSMENT",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                            },
+                            {
+                                category: "HARM_CATEGORY_HATE_SPEECH",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                            },
+                            {
+                                category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                            },
+                            {
+                                category: "HARM_CATEGORY_DANGEROUS_CONTENT",
+                                threshold: "BLOCK_MEDIUM_AND_ABOVE"
+                            }
+                        ]
+                    };
+                    
+                    console.log('Making API request to:', apiUrl);
+                    console.log('Request payload:', JSON.stringify(payload, null, 2));
+                    
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'x-goog-api-key': apiKey
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    console.log('Response status:', response.status);
+                    console.log('Response headers:', response.headers);
+
+                    const responseText = await response.text();
+                    console.log('Raw response:', responseText);
+
+                    if (!response.ok) {
+                        let errorMessage = `API error: ${response.status} ${response.statusText}`;
+                        try {
+                            const errorData = JSON.parse(responseText);
+                            if (errorData.error && errorData.error.message) {
+                                errorMessage += ` - ${errorData.error.message}`;
+                            }
+                        } catch (e) {
+                            errorMessage += ` - ${responseText}`;
+                        }
+                        throw new Error(errorMessage);
+                    }
+
+                    const result = JSON.parse(responseText);
+                    console.log('Parsed API Response:', result);
+                    
+                    let generatedText = "アイデアを生成できませんでした。";
+                    
+                    if (result.candidates && result.candidates.length > 0) {
+                        const candidate = result.candidates[0];
+                        if (candidate.content && candidate.content.parts && candidate.content.parts.length > 0) {
+                            generatedText = candidate.content.parts[0].text;
+                        } else if (candidate.finishReason === "SAFETY") {
+                            generatedText = "安全上の理由により、このリクエストに対する応答を生成できませんでした。別の内容でお試しください。";
+                        } else {
+                            generatedText = `応答を生成できませんでした（理由: ${candidate.finishReason || 'UNKNOWN'}）`;
+                        }
+                    } else if (result.promptFeedback) {
+                        if (result.promptFeedback.blockReason) {
+                            generatedText = `プロンプトがブロックされました（理由: ${result.promptFeedback.blockReason}）`;
+                        }
+                    }
+
+                    // Display the result in a tweet-like preview
+                    outputDiv.innerHTML = `
+                        <div class="tweet-preview bg-white w-full">
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/48x48/E2E8F0/475569?text=W" class="rounded-full" alt="わどアイコン">
+                                <div class="ml-3">
+                                    <p class="font-bold">わど@AI界隈のマスコット</p>
+                                    <p class="text-sm text-slate-500">@wad0427</p>
+                                </div>
+                            </div>
+                            <p class="mt-3 text-base">${generatedText}</p>
+                        </div>
+                    `;
+
+                } catch (error) {
+                    console.error('Error calling Gemini API:', error);
+                    let errorMessage = error.message;
+                    let showFallback = false;
+                    
+                    // より分かりやすいエラーメッセージに変換
+                    if (error.message.includes('403')) {
+                        errorMessage = 'APIアクセスが拒否されました。APIキーの権限を確認してください。';
+                        showFallback = true;
+                    } else if (error.message.includes('429')) {
+                        errorMessage = 'API使用量の上限に達しました。しばらく待ってから再試行してください。';
+                        showFallback = true;
+                    } else if (error.message.includes('400')) {
+                        errorMessage = 'リクエストの形式が不正です。';
+                    } else if (error.message.includes('NetworkError') || error.message.includes('Failed to fetch')) {
+                        errorMessage = 'ネットワークエラーが発生しました。インターネット接続を確認してください。';
+                        showFallback = true;
+                    } else if (error.message.includes('API_KEY_INVALID')) {
+                        errorMessage = 'APIキーが無効です。正しいAPIキーを設定してください。';
+                        showFallback = true;
+                    }
+                    
+                    // フォールバック用のサンプルツイート
+                    const fallbackTweets = {
+                        "① 会話を始めよう": "💬 AIツールを使いこなすコツ、知りたくありませんか？\n\n実は多くの人が「何を質問していいかわからない」と悩んでいます。\n\n効果的なプロンプトの3つのポイント：\n✅ 具体的な状況を伝える\n✅ 求める結果を明確にする  \n✅ 制約条件も含める\n\nどんなAIツールで困っていますか？🤔",
+                        "② 滞在時間を意識しよう": "🧵 【図解】ChatGPTの回答品質を3倍上げる方法\n\n多くの人がやってしまう❌：\n「資料作って」\n\n効果的な✅：\n「新人研修用のExcel講座資料を、30分のセミナー形式で、初心者でもわかるように作成してください。目標は基本操作の習得です」\n\n違いがわかりますか？\n\n続きは次のツイートで→",
+                        "③ 𝕏内で価値を完結させよう": "🎯 𝕏だけで完結するAI活用術\n\n外部リンクに頼らず、ここで価値提供💡\n\n✨ 今すぐ使えるプロンプト集\n「〜について、3つのポイントで教えて」\n「〜のメリット・デメリットを表で整理して」\n「〜を初心者向けに例え話で説明して」\n\nどれを試してみたいですか？\nリプライで教えてください！",
+                        "④ 質で勝負しよう": "🚀 AI×ビジネスの最前線\n\n2024年、生産性が10倍になったタスク：\n📊 データ分析：Excel→ChatGPT\n✍️ 文書作成：Word→Claude\n🎨 画像生成：Photoshop→Midjourney\n🔍 調査業務：Google→Perplexity\n\nでも一番大切なのは「何を作るか」を決める人間の思考力。\n\nAIに任せられないタスクって何だと思いますか？",
+                        "⑤ コミュニティを形成しよう": "🎙️ 来週のXスペース予告\n\n「AI初心者が30日で業務効率化マスターになる方法」\n\n📅 日時：○月○日 20:00〜\n🎯 対象：AI活用に興味がある方\n💡 内容：\n・実際の成功事例紹介\n・よくある失敗パターン\n・Q&Aセッション\n\n参加してみたい方は🙋‍♂️でリアクションください！\n通知設定もお忘れなく🔔"
+                    };
+                    
+                    let content = `
+                        <div class="text-red-500 p-4 bg-red-100 rounded-lg">
+                            <p class="font-bold">エラーが発生しました</p>
+                            <p class="text-sm mt-1">${errorMessage}</p>
+                            <details class="mt-2">
+                                <summary class="cursor-pointer text-xs text-red-400">詳細情報</summary>
+                                <pre class="text-xs mt-1 overflow-auto">${error.message}</pre>
+                            </details>
+                        </div>
+                    `;
+                    
+                    if (showFallback && fallbackTweets[actionText]) {
+                        content += `
+                            <div class="tweet-preview bg-white w-full mt-3">
+                                <div class="bg-blue-50 p-2 rounded-t-lg">
+                                    <p class="text-xs text-blue-600 font-medium">💡 サンプルツイート案（フォールバック）</p>
+                                </div>
+                                <div class="p-3">
+                                    <div class="flex items-center">
+                                        <img src="https://placehold.co/48x48/E2E8F0/475569?text=W" class="rounded-full" alt="わどアイコン">
+                                        <div class="ml-3">
+                                            <p class="font-bold">わど@AI界隈のマスコット</p>
+                                            <p class="text-sm text-slate-500">@wad0427</p>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 text-base">${fallbackTweets[actionText]}</p>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    outputDiv.innerHTML = content;
+                }
+            });
+        });
+
+        // API Test Function
+        const testApiBtn = document.getElementById('testApiBtn');
+        const outputDiv = document.getElementById('gemini-output');
+        
+        testApiBtn.addEventListener('click', async () => {
+            outputDiv.innerHTML = `
+                <div class="flex items-center justify-center w-full h-full">
+                    <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-500"></div>
+                    <p class="ml-3 text-slate-500 text-sm">API接続をテスト中...</p>
+                </div>
+            `;
+            
+            try {
+                const apiKey = "AIzaSyA70WR9oceK0WJL9sB-O_NbBbX40hxQBL8";
+                const testUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
+                
+                const testPayload = {
+                    contents: [
+                        {
+                            role: "user",
+                            parts: [{ text: "こんにちは" }]
+                        }
+                    ],
+                    generationConfig: {
+                        temperature: 0.5,
+                        maxOutputTokens: 50
+                    }
+                };
+                
+                const response = await fetch(testUrl, {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'x-goog-api-key': apiKey
+                    },
+                    body: JSON.stringify(testPayload)
+                });
+                
+                const responseText = await response.text();
+                
+                if (response.ok) {
+                    outputDiv.innerHTML = `
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-3 py-2 rounded text-sm">
+                            <p class="font-bold">✅ API接続成功</p>
+                            <p class="text-xs mt-1">ステータス: ${response.status}</p>
+                            <details class="mt-1">
+                                <summary class="cursor-pointer text-xs">レスポンス詳細</summary>
+                                <pre class="text-xs mt-1 overflow-auto max-h-20">${responseText}</pre>
+                            </details>
+                        </div>
+                    `;
+                } else {
+                    outputDiv.innerHTML = `
+                        <div class="bg-red-100 border border-red-400 text-red-700 px-3 py-2 rounded text-sm">
+                            <p class="font-bold">❌ API接続失敗</p>
+                            <p class="text-xs mt-1">ステータス: ${response.status} ${response.statusText}</p>
+                            <details class="mt-1">
+                                <summary class="cursor-pointer text-xs">エラー詳細</summary>
+                                <pre class="text-xs mt-1 overflow-auto max-h-20">${responseText}</pre>
+                            </details>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                outputDiv.innerHTML = `
+                    <div class="bg-red-100 border border-red-400 text-red-700 px-3 py-2 rounded text-sm">
+                        <p class="font-bold">🚫 テスト失敗</p>
+                        <p class="text-xs mt-1">${error.message}</p>
+                    </div>
+                `;
+            }
+        });
+
+        // Initialize the first slide
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
