@@ -77,11 +77,12 @@
 - **インタラクティブ進捗管理**機能で毎日の実行をサポート
 - **シャドウバン対策**完備で安全な成長を保証
 
-### 📝 [さとり構文活用戦略](strategies/satori-syntax-strategy.md)
+### 📝 [さとり構文活用戦略](https://kento-nakai-ai.github.io/x-algorithm/pages/satori-syntax-strategy.html)
 - **万バズ量産のための文章構成法**による効果的なSNSマーケティング
 - **心理学的根拠**に基づく5つの構文バリエーション（A～E）
 - **実践的ステップガイド**で段階的な習得をサポート
 - **収益化戦略**とファネル構築による持続可能なマネタイズ
+- **[Markdown版はこちら](strategies/satori-syntax-strategy.md)** - テキストベースでの参照・編集可能
 
 ### 📋 [7/25 Xチーム定例ミーティング議事録](https://kento-nakai-ai.github.io/x-algorithm/pages/x-team-meeting-0725.html)
 - **運用体制確立とKPI設定**の重要な決定事項を詳細記録
@@ -131,6 +132,7 @@
 │   ├── cheeseburger-action-plan.html # チーズバーガー戦略
 │   ├── buzz-post-gpts-manual.html   # バズポストGPTs 魔法の投稿テンプレート
 │   ├── buzz-patterns-manual.html    # バズりやすい型マニュアル
+│   ├── satori-syntax-strategy.html  # さとり構文活用戦略
 │   └── x-team-meeting-0725.html     # 7/25 Xチーム定例ミーティング議事録
 ├── strategies/                   # 📋 戦略関連ドキュメント
 │   ├── ai-thread-posting-strategy.md
@@ -338,6 +340,12 @@ const apiKey = "YOUR_GEMINI_API_KEY_HERE";
 
 ## 📝 更新履歴
 
+- **2025.01** - **さとり構文活用戦略Webページ化**
+  - **万バズ量産の文章構成法**を視覚的に解説するHTML版を作成
+  - **心理学的根拠・実績データ**を強調した説得力ある構成
+  - **5つの構文バリエーション**（A～E）を詳細解説
+  - **実践ステップガイド・ターゲティング戦略**まで網羅
+  - **アニメーション・カウンター効果**で印象的なUI/UX
 - **2025.01** - **バズりやすい型マニュアルWebページ化**
   - **7つのバズ型を詳細解説**したDiscord分析ベースのHTML版を作成
   - **投稿テンプレート・成功事例・タイミング戦略**を視覚的に構成
