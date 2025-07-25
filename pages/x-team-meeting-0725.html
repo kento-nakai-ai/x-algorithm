@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7/25 Xチーム定例ミーティング議事録 | X戦略解説集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .fade-in {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+        }
+        .priority-high {
+            border-left: 4px solid #ef4444;
+        }
+        .priority-medium {
+            border-left: 4px solid #f59e0b;
+        }
+        .priority-low {
+            border-left: 4px solid #10b981;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-sm border-b border-slate-200 sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-bold text-slate-800">X（旧Twitter）アカウント運用定例ミーティング</h1>
+                    <p class="text-slate-600 mt-1">2025年7月25日（金）議事録</p>
+                </div>
+                <a href="../index.html" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-4 py-2 rounded-lg transition-colors">
+                    ← トップに戻る
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 max-w-5xl">
+
+        <!-- Executive Summary -->
+        <section class="mb-12 fade-in">
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold mb-4 flex items-center">
+                    <span class="text-3xl mr-3">📋</span>
+                    エグゼクティブサマリー
+                </h2>
+                <div class="prose prose-lg prose-white max-w-none">
+                    <p class="text-blue-100 leading-relaxed">
+                        当会議では、Xアカウントの直近2週間のパフォーマンス分析を実施した。現状の課題として、<strong class="text-white">いいね数に対してブックマーク数が伸び悩んでおり</strong>、ファンのエンゲージメントに留まり新規層へのリーチが限定的であることが特定された。この課題を解決するため、<strong class="text-white">投稿頻度を毎日とし、ブックマークを促進する「スレッド投稿」や「まとめ投稿」を導入</strong>することを決定した。併せて、投稿タイプごとの担当者と週間スケジュールを明確化し、次週から新体制での運用を開始する。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meeting Info -->
+        <section class="mb-12 fade-in">
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
+                    <span class="text-3xl mr-3">ℹ️</span>
+                    会議基本情報
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <span class="font-semibold text-slate-700 w-24">日時:</span>
+                            <span class="text-slate-600">2025年7月25日（金） 11:56～13:38</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="font-semibold text-slate-700 w-24">場所:</span>
+                            <span class="text-slate-600">オンライン</span>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="font-semibold text-slate-700 w-24">参加者:</span>
+                            <div class="text-slate-600">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">わど</span>
+                                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">鏑木 智哉</span>
+                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">三井 唯</span>
+                                    <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm">ゆき</span>
+                                    <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">中井 健登</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <span class="font-semibold text-slate-700 block mb-2">会議の目的:</span>
+                            <ul class="text-slate-600 space-y-1 list-disc list-inside">
+                                <li>Xアカウントの週間パフォーマンスレビュー</li>
+                                <li>投稿ごとの詳細分析を通じた次期アクションプランの策定</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <span class="font-semibold text-slate-700 block mb-2">配布資料:</span>
+                            <div class="space-y-2">
+                                <a href="https://kento-nakai-ai.github.io/x-algorithm/" class="block text-blue-600 hover:text-blue-800 underline text-sm">📊 7/25時点 アルゴリズム整理</a>
+                                <a href="https://docs.google.com/spreadsheets/d/1f6kdOH0uA9TIBOwo52dA6b6MWNi4H78Tvu1pW1cZTnc/edit?gid=1262565519#gid=1262565519" class="block text-blue-600 hover:text-blue-800 underline text-sm">📈 分析スプレッドシート</a>
+                                <a href="https://x.com/happyyoshigi/status/1924208522201292899" class="block text-blue-600 hover:text-blue-800 underline text-sm">💡 参考投稿（よしぎ氏）</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Decisions -->
+        <section class="mb-12 fade-in">
+            <div class="bg-green-50 border border-green-200 rounded-xl p-8">
+                <h2 class="text-2xl font-bold text-green-800 mb-6 flex items-center">
+                    <span class="text-3xl mr-3">✅</span>
+                    重要な決定事項
+                </h2>
+                <div class="space-y-6">
+                    <div class="bg-white rounded-lg p-6 priority-high">
+                        <h3 class="text-lg font-semibold text-slate-800 mb-3">🎯 目標設定の変更</h3>
+                        <ul class="space-y-2 text-slate-600">
+                            <li>• 主要KPI（重要業績評価指標）として<strong class="text-red-600">「ブックマーク数」と「プロフィールアクセス数」</strong>を重視する</li>
+                            <li>• 具体的な目標として、各投稿の<strong class="text-red-600">ブックマーク数をいいね数の50%</strong>以上とすることを目指す</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 priority-high">
+                        <h3 class="text-lg font-semibold text-slate-800 mb-3">📝 投稿方針の強化</h3>
+                        <ul class="space-y-2 text-slate-600">
+                            <li>• 投稿頻度を「最低1日1投稿」から<strong class="text-red-600">「毎日投稿」</strong>へと引き上げる</li>
+                            <li>• 過去に反響のあった投稿を再編集して投稿する<strong class="text-orange-600">「チーズバーガー戦略」</strong>を週次で取り入れる</li>
+                            <li>• ブックマークを促進するため、ノウハウや情報をまとめた<strong class="text-blue-600">「スレッド投稿」</strong>を週次で実施する</li>
+                            <li>• 投稿作成時は<strong class="text-green-600">「1投稿1メッセージ」</strong>の原則を徹底し、ターゲットと目的を明確にする</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 priority-medium">
+                        <h3 class="text-lg font-semibold text-slate-800 mb-3">👥 運用体制の確定</h3>
+                        <ul class="space-y-2 text-slate-600">
+                            <li>• 投稿タイプごとに担当者を割り振り、週間スケジュールを固定化する</li>
+                            <li>• 投稿はXSTEP上で下書きを作成し、最終的にわど氏が確認・投稿するフローを徹底する</li>
+                            <li>• 三井氏はX運用にリソースを集中するため、LINE対応およびセールス関連業務を他メンバーへ移管する</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg p-6 priority-low">
+                        <h3 class="text-lg font-semibold text-slate-800 mb-3">📊 分析体制の定例化</h3>
+                        <ul class="space-y-2 text-slate-600">
+                            <li>• 毎週金曜に、エンゲージメント率を基準とした上位・下位3投稿の分析を鏑木氏が実施し、定例で報告する</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Items -->
+        <section class="mb-12 fade-in">
+            <div class="bg-orange-50 border border-orange-200 rounded-xl p-8">
+                <h2 class="text-2xl font-bold text-orange-800 mb-6 flex items-center">
+                    <span class="text-3xl mr-3">📋</span>
+                    ToDo（アクションアイテム）
+                </h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full bg-white rounded-lg shadow-sm">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-4 text-left font-semibold text-slate-700">担当者</th>
+                                <th class="px-6 py-4 text-left font-semibold text-slate-700">具体的なタスク</th>
+                                <th class="px-6 py-4 text-left font-semibold text-slate-700">期限</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4">
+                                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">鏑木 智哉</span>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600">
+                                    <div class="space-y-2">
+                                        <div>• 日常ポスト（パーソナリティが伝わる内容）の作成・投稿予約</div>
+                                        <div>• プレゼント企画ポストの作成・投稿予約</div>
+                                        <div>• 図解ポスト用の原稿作成・投稿予約</div>
+                                        <div>• 投稿分析レポート（エンゲージメント上位/下位3投稿）の作成と定例での報告</div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600">
+                                    <div class="space-y-2">
+                                        <div>毎週土曜日</div>
+                                        <div>毎週水曜日</div>
+                                        <div>毎週金曜日</div>
+                                        <div>2025/08/01</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4">
+                                    <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">三井 唯</span>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600">
+                                    <div class="space-y-2">
+                                        <div>• 引用ポスト（AI関連や時事ネタなど）の作成・投稿予約</div>
+                                        <div>• 対談・コラボ動画ポストのストック確認と投稿予約</div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600">
+                                    <div class="space-y-2">
+                                        <div>毎週火曜日</div>
+                                        <div>毎週月曜日</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4">
+                                    <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium">ゆき</span>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600">スレッド形式のノウハウ投稿の作成・投稿予約</td>
+                                <td class="px-6 py-4 text-slate-600">毎週木曜日</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4">
+                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">わど</span>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600">
+                                    <div class="space-y-2">
+                                        <div>• 最新AI情報に関するポストの作成・投稿予約</div>
+                                        <div>• 他の発信者への交流（リプライ、引用）の実施</div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600">
+                                    <div class="space-y-2">
+                                        <div>毎週日曜日</div>
+                                        <div>随時</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4">
+                                    <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm font-medium">全員</span>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600">共有されたインプット資料（さとり構文、X講座等）の確認</td>
+                                <td class="px-6 py-4 text-slate-600">2025/08/01</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Discussion Points -->
+        <section class="mb-12 fade-in">
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-8">
+                <h2 class="text-2xl font-bold text-blue-800 mb-6 flex items-center">
+                    <span class="text-3xl mr-3">💬</span>
+                    主要議論内容
+                </h2>
+                <div class="space-y-8">
+                    <div class="bg-white rounded-lg p-6 card-hover">
+                        <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center">
+                            <span class="text-xl mr-2">📊</span>
+                            議題1：週間パフォーマンスレビューと目標設定
+                        </h3>
+                        <div class="space-y-4 text-slate-600">
+                            <div class="flex items-start">
+                                <span class="font-semibold text-green-600 mr-2">鏑木:</span>
+                                <span>直近2週間のアナリティクスを共有。プレゼント企画等を開始した7月16日以降、インプレッション・エンゲージメント共に増加傾向。</span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-semibold text-blue-600 mr-2">わど:</span>
+                                <span>現状の課題は、いいね数に対してブックマーク数が少ない点。これは固定ファンからの反応が中心で、新規層に有益な情報として認識されていない可能性を示唆している。プロフィールアクセス数も同様に強化が必要。</span>
+                            </div>
+                            <div class="bg-green-100 p-4 rounded-lg">
+                                <span class="font-semibold text-green-800">結論:</span>
+                                <span class="text-green-700 ml-2">今後の目標として、いいね数の半分をブックマーク数が獲得できるような、「後で見返したい」と思わせる価値提供型のコンテンツを増やす方針で合意。具体的なKPIとして「ブックマーク数」「プロフィールアクセス数」を追うことを決定。</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-6 card-hover">
+                        <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center">
+                            <span class="text-xl mr-2">🔍</span>
+                            議題2：投稿コンテンツ分析と改善策
+                        </h3>
+                        <div class="space-y-4 text-slate-600">
+                            <div class="flex items-start">
+                                <span class="font-semibold text-yellow-600 mr-2">中井:</span>
+                                <span>エンゲージメントランキングを共有。最もエンゲージメントが高かったのは「Anifuion（AI漫画作成ツール）」の紹介投稿。</span>
+                            </div>
+                            <div class="bg-yellow-100 p-4 rounded-lg">
+                                <div class="font-semibold text-yellow-800 mb-2">成功要因分析:</div>
+                                <ul class="text-yellow-700 space-y-1 list-disc list-inside">
+                                    <li>「すぐ消す」といった緊急性・限定性の演出</li>
+                                    <li>漫画投稿の流れに乗った関連性</li>
+                                    <li>具体的な活用方法の提示（4,000文字の解説）</li>
+                                </ul>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-semibold text-blue-600 mr-2">わど:</span>
+                                <span>過去に伸びた投稿の型を再利用する「チーズバーガー戦略」の有効性を指摘。また、「むっちゃDMくる」といった表現は、行列のできている店に人が集まる「バンドワゴン効果」を狙ったものであり、有効な手法である。</span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-semibold text-pink-600 mr-2">ゆき:</span>
+                                <span>ブックマークが多い投稿の例として、会話形式でノウハウを解説するよしぎ氏の投稿を共有。このような形式は保存されやすく、バズに繋がりやすい。</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg p-6 card-hover">
+                        <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center">
+                            <span class="text-xl mr-2">⚙️</span>
+                            議題3：今後の運用体制とネクストアクション
+                        </h3>
+                        <div class="space-y-4 text-slate-600">
+                            <div class="flex items-start">
+                                <span class="font-semibold text-yellow-600 mr-2">中井:</span>
+                                <span>現状の投稿数（最低1日1回）はアルゴリズム的に不十分であり、1日3〜5投稿を目指すべき。また、自発的なリプライや引用による他アカウントとの交流が不足している。</span>
+                            </div>
+                            <div class="flex items-start">
+                                <span class="font-semibold text-blue-600 mr-2">わど:</span>
+                                <span>Xの優先順位を全業務の中で最高位に設定する必要がある。リソース不足は、各人のタスクの優先順位を見直すことで解決すべき。</span>
+                            </div>
+                            <div class="bg-orange-100 p-4 rounded-lg">
+                                <div class="font-semibold text-orange-800 mb-2">決定事項:</div>
+                                <ul class="text-orange-700 space-y-1 list-disc list-inside">
+                                    <li>投稿頻度を上げるため、投稿スケジュールと担当者を明確に分担することを決定</li>
+                                    <li>三井氏はX運用にリソースを集中させるため、セールスおよびLINE対応業務から外れる方向で調整する</li>
+                                    <li>各担当者は責任を持ってリサーチから投稿作成までを一貫して行い、XSTEP上で予約投稿する</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pending Items -->
+        <section class="mb-12 fade-in">
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-8">
+                <h2 class="text-2xl font-bold text-gray-700 mb-6 flex items-center">
+                    <span class="text-3xl mr-3">⏸️</span>
+                    保留・未決事項
+                </h2>
+                <div class="space-y-3 text-slate-600">
+                    <div class="flex items-start">
+                        <span class="text-gray-400 mr-2">•</span>
+                        <span>外部のインフルエンサーやバズ投稿への戦略的なリプライ活動の効果検証</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-gray-400 mr-2">•</span>
+                        <span>投稿作成におけるクオリティと作成時間の最適なバランスの模索</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Next Steps -->
+        <section class="mb-12 fade-in">
+            <div class="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-8 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-bold mb-6 flex items-center">
+                    <span class="text-3xl mr-3">🚀</span>
+                    ネクストステップ・次回会議について
+                </h2>
+                <div class="space-y-4">
+                    <div>
+                        <span class="font-semibold text-purple-100">次回会議予定日:</span>
+                        <span class="ml-2 text-white">2025年8月1日（金）</span>
+                    </div>
+                    <div>
+                        <span class="font-semibold text-purple-100 block mb-2">主要アジェンダ:</span>
+                        <ul class="space-y-1 text-purple-100 list-disc list-inside ml-4">
+                            <li>新運用体制での各担当タスクの進捗確認</li>
+                            <li>1週間の投稿パフォーマンスレビュー（特にブックマーク数の分析）</li>
+                            <li>次週のアクションプラン策定</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-slate-500">© 2025 X戦略解説集 | Created for team collaboration purposes</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '10px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+</html> 
