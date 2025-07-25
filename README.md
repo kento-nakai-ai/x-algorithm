@@ -22,10 +22,17 @@
 - **Gemini AI機能**搭載でリアルタイムツイート生成
 - アカウントのポテンシャルを最大化する戦略
 
-### 🚀 [7月集客アクションプラン](https://kento-nakai-ai.github.io/x-algorithm/action-plans/july/)
-- **7/31まで300人達成**を目指す高密度プラン
-- 日々のコントロール可能なタスクの積み重ね
-- GIVEAWAY企画でのラストスパート戦略
+### 🤖 [わど@AI界隈のマスコット アクションプラン](https://kento-nakai-ai.github.io/x-algorithm/action-plans/wado/)
+- **2025年最新アルゴリズム対応**のわど専用運用戦略
+- **67人→400人達成**を目指す包括的なアクションプラン
+- **Daily Routine・週間戦略・投稿テンプレート**を完全網羅
+- **リスク管理・KPI設定**まで含む実践的ガイド
+
+### 📊 [7月実績分析＆改善策レポート](https://kento-nakai-ai.github.io/x-algorithm/action-plans/july/)
+- **7月集客実績の詳細分析**と効果測定結果
+- **媒体別パフォーマンス比較**（X・Instagram・YouTube）
+- **成功/失敗要因の具体的分析**とネクストアクション
+- **統合SNS戦略**による今後の改善計画
 
 ### 📈 [8月集客アクションプラン](https://kento-nakai-ai.github.io/x-algorithm/action-plans/august/)
 - **8/31まで400人達成**を目指す持続的成長戦略
@@ -67,9 +74,11 @@
 ├── algorithm/                    # アルゴリズム解説
 │   └── index.html
 ├── action-plans/                 # アクションプラン群
-│   ├── july/
+│   ├── wado/                     # わど専用アクションプラン
 │   │   └── index.html
-│   └── august/
+│   ├── july/                     # 7月実績分析レポート
+│   │   └── index.html
+│   └── august/                   # 8月集客プラン
 │       └── index.html
 ├── assets/                       # 共通リソース
 │   ├── css/
