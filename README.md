@@ -14,7 +14,7 @@
 ## 📂 ツール・プレゼンテーション一覧
 
 ### 🎨 [ランディングページ](https://kento-nakai-ai.github.io/x-algorithm/)
-- 9つのツール・プレゼンテーションへのエントリーポイント
+- 10つのツール・プレゼンテーションへのエントリーポイント
 - レスポンシブデザインで美しいカード形式
 
 ### 📊 [𝕏最新アルゴリズム解説](https://kento-nakai-ai.github.io/x-algorithm/pages/algorithm-index.html)
@@ -28,6 +28,12 @@
 - **心理学的アプローチ**と**データドリブン手法**の融合
 - **実用的テンプレート集**でワンクリックコピー機能
 - **効果測定・A/Bテスト**による継続的改善サポート
+
+### 🔥 [バズポストGPTs 魔法の投稿テンプレート](manuals/buzz-post-gpts-manual.md)
+- **「いいね・シェアが止まらない！」**バズ投稿の体系的制作手法
+- **「型×アルゴリズム理解×AI活用」**を統合したポスト制作の極意
+- **HARMの法則**（Health/Ambition/Relation/Money）による拡散力UP
+- **GPTsツール活用**による効率的なバズ投稿量産システム
 
 ### 🧵 [AI系スレッド構文分析](https://kento-nakai-ai.github.io/x-algorithm/pages/ai-thread-strategy.html)
 - 効果的なスレッド投稿のための戦略ガイド
@@ -118,7 +124,8 @@
 │   ├── x-post-creation-manual.md
 │   ├── x-algorithm-guide.md
 │   ├── x-algorithm-optimization.md
-│   └── nakai-kento-action-plan.md
+│   ├── nakai-kento-action-plan.md
+│   └── buzz-post-gpts-manual.md      # バズポストGPTs魔法の投稿テンプレート
 ├── action-plans/                 # 🎯 アクションプラン群
 │   ├── wado/                     # わど専用アクションプラン
 │   │   └── index.html
@@ -311,6 +318,12 @@ const apiKey = "YOUR_GEMINI_API_KEY_HERE";
 
 ## 📝 更新履歴
 
+- **2025.01** - **バズポストGPTs 魔法の投稿テンプレート追加**
+  - **「いいね・シェアが止まらない！」**バズ投稿の体系的制作手法を追加
+  - **「型×アルゴリズム理解×AI活用」**を統合したポスト制作の極意
+  - **HARMの法則**（Health/Ambition/Relation/Money）による拡散ネタ生成
+  - **GPTsツール活用ガイド**とPDCAサイクルによる継続運用戦略
+  - **10つのツール・プレゼンテーション構成**に拡張
 - **2025.01** - **さとり構文活用戦略追加**
   - **万バズ量産のための文章構成法**：心理学的根拠に基づく5つの構文バリエーション
   - **実践的ステップガイド**：段階的習得方法とデータ分析手法
