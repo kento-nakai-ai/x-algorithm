@@ -29,11 +29,12 @@
 - **実用的テンプレート集**でワンクリックコピー機能
 - **効果測定・A/Bテスト**による継続的改善サポート
 
-### 🔥 [バズポストGPTs 魔法の投稿テンプレート](manuals/buzz-post-gpts-manual.md)
+### 🔥 [バズポストGPTs 魔法の投稿テンプレート](https://kento-nakai-ai.github.io/x-algorithm/pages/buzz-post-gpts-manual.html)
 - **「いいね・シェアが止まらない！」**バズ投稿の体系的制作手法
 - **「型×アルゴリズム理解×AI活用」**を統合したポスト制作の極意
 - **HARMの法則**（Health/Ambition/Relation/Money）による拡散力UP
 - **GPTsツール活用**による効率的なバズ投稿量産システム
+- **[Markdown版はこちら](manuals/buzz-post-gpts-manual.md)** - テキストベースでの参照・編集可能
 
 ### 🚀 [バズりやすい型マニュアル](manuals/buzz-patterns-manual.md)
 - **7つのバズ型を体系化**したDiscordチャンネル分析ベースのマニュアル
@@ -127,6 +128,7 @@
 │   ├── ai-thread-strategy.html      # AI系スレッド構文分析
 │   ├── algorithm-index.html         # アルゴリズム解説
 │   ├── cheeseburger-action-plan.html # チーズバーガー戦略
+│   ├── buzz-post-gpts-manual.html   # バズポストGPTs 魔法の投稿テンプレート
 │   └── x-team-meeting-0725.html     # 7/25 Xチーム定例ミーティング議事録
 ├── strategies/                   # 📋 戦略関連ドキュメント
 │   ├── ai-thread-posting-strategy.md
@@ -334,6 +336,12 @@ const apiKey = "YOUR_GEMINI_API_KEY_HERE";
 
 ## 📝 更新履歴
 
+- **2025.01** - **バズポストGPTs魔法の投稿テンプレートWebページ化**
+  - **12章構成の包括的バズ投稿マニュアル**をHTML形式で作成
+  - **視覚的で見やすいUI/UX**による学習体験の向上
+  - **GPTsツールへの直接アクセス**とステップ別解説
+  - **Web版・Markdown版の両方**からアクセス可能な構成
+  - **実践的テンプレートとワーク**を含む完全ガイド
 - **2025.01** - **7/25 Xチーム定例ミーティング議事録追加**
   - **運用体制確立とKPI設定**の重要決定事項を詳細記録
   - **ブックマーク数重視への方針転換**とパフォーマンス分析結果
