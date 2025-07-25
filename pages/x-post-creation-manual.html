@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xポスト作成運用マニュアル | 高エンゲージメント投稿フレームワーク</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px -8px rgb(0 0 0 / 0.15);
+        }
+        .section-active {
+            display: block;
+        }
+        .section-inactive {
+            display: none;
+        }
+        .nav-active {
+            background-color: #0ea5e9;
+            color: white;
+        }
+        .template-text {
+            font-family: 'Courier New', monospace;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        .copy-success {
+            background-color: #10b981 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-sky-50 text-slate-800 min-h-screen">
+
+    <!-- Header -->
+    <header class="container mx-auto px-4 py-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-sky-600 tracking-tight mb-4">📝 Xポスト作成運用マニュアル</h1>
+        <p class="text-lg md:text-xl text-slate-600 mb-6">高エンゲージメントを獲得するための体系的フレームワーク</p>
+        <div class="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                <span>心理学的アプローチ</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                <span>データドリブン手法</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+                <span>実用的テンプレート</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 bg-white/90 backdrop-blur-sm border-b border-slate-200 z-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-2 py-4">
+                <button onclick="showSection('overview')" class="nav-btn nav-active px-4 py-2 rounded-lg font-medium text-sm transition-all">概要</button>
+                <button onclick="showSection('framework')" class="nav-btn px-4 py-2 rounded-lg font-medium text-sm transition-all hover:bg-slate-100">6要素フレームワーク</button>
+                <button onclick="showSection('process')" class="nav-btn px-4 py-2 rounded-lg font-medium text-sm transition-all hover:bg-slate-100">作成プロセス</button>
+                <button onclick="showSection('templates')" class="nav-btn px-4 py-2 rounded-lg font-medium text-sm transition-all hover:bg-slate-100">テンプレート集</button>
+                <button onclick="showSection('measurement')" class="nav-btn px-4 py-2 rounded-lg font-medium text-sm transition-all hover:bg-slate-100">効果測定</button>
+                <button onclick="showSection('guidelines')" class="nav-btn px-4 py-2 rounded-lg font-medium text-sm transition-all hover:bg-slate-100">注意事項</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+
+        <!-- Overview Section -->
+        <section id="overview" class="section-content section-active">
+            <div class="bg-white rounded-xl p-8 shadow-lg mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                    <span class="text-sky-500">🎯</span>
+                    概要
+                </h2>
+                <p class="text-lg text-slate-600 mb-8">
+                    このマニュアルは、高エンゲージメントを獲得するXポストを作成するための体系的なフレームワークです。
+                    心理学的アプローチとデータドリブンな手法を組み合わせ、効果的なコンテンツ作成を支援します。
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gradient-to-br from-sky-50 to-blue-50 p-6 rounded-xl">
+                        <div class="text-2xl mb-3">🧠</div>
+                        <h3 class="text-lg font-semibold text-slate-800 mb-2">心理学的アプローチ</h3>
+                        <p class="text-slate-600 text-sm">認知的不協和、緊急性、希少性などの心理原則を活用したコンテンツ設計</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl">
+                        <div class="text-2xl mb-3">📊</div>
+                        <h3 class="text-lg font-semibold text-slate-800 mb-2">データドリブン手法</h3>
+                        <p class="text-slate-600 text-sm">数値による価値訴求、A/Bテスト、継続的改善による最適化</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl">
+                        <div class="text-2xl mb-3">📝</div>
+                        <h3 class="text-lg font-semibold text-slate-800 mb-2">実用的テンプレート</h3>
+                        <p class="text-slate-600 text-sm">すぐに使える具体的なテンプレートと実践的なガイドライン</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Framework Section -->
+        <section id="framework" class="section-content section-inactive">
+            <div class="bg-white rounded-xl p-8 shadow-lg mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                    <span class="text-sky-500">🔧</span>
+                    6要素フレームワーク
+                </h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- フック -->
+                    <div class="bg-gradient-to-br from-red-50 to-orange-50 p-6 rounded-xl card-hover">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                            <span class="text-2xl">🎣</span>
+                            1. フック（冒頭1行目）
+                        </h3>
+                        <p class="text-slate-600 mb-4"><strong>目的:</strong> ユーザーの注意を瞬時に引き、続きを読ませる</p>
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong class="text-red-600">緊急性の演出:</strong> 「すぐ」「今すぐ」「急げ」等
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong class="text-orange-600">希少性の強調:</strong> 「限定」「消す」「削除予定」等
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong class="text-yellow-600">視覚的強調:</strong> 【】『』等の記号で目立たせる
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 違和感の創出 -->
+                    <div class="bg-gradient-to-br from-purple-50 to-indigo-50 p-6 rounded-xl card-hover">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                            <span class="text-2xl">⚡</span>
+                            2. 違和感の創出
+                        </h3>
+                        <p class="text-slate-600 mb-4"><strong>目的:</strong> 認知的不協和を利用してユーザーの関心を引く</p>
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong class="text-purple-600">逆説的表現:</strong> 良いことを悪いように表現
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong class="text-indigo-600">意外性の演出:</strong> 期待とは逆の結果を提示
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong class="text-blue-600">常識への挑戦:</strong> 既存の常識に疑問を投げかける
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 具体性の確保 -->
+                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-6 rounded-xl card-hover">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                            <span class="text-2xl">🎯</span>
+                            3. 具体性の確保
+                        </h3>
+                        <p class="text-slate-600 mb-4"><strong>目的:</strong> 抽象的な表現を避け、明確で具体的な情報を提供</p>
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong class="text-green-600">具体的な名称:</strong> ツール名やサービス名を明記
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong class="text-teal-600">専門用語の活用:</strong> 業界用語の適切な使用
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 数値による価値訴求 -->
+                    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-xl card-hover">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                            <span class="text-2xl">📊</span>
+                            4. 数値による価値訴求
+                        </h3>
+                        <p class="text-slate-600 mb-4"><strong>目的:</strong> 定量的な情報でコンテンツの価値を明確化</p>
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong class="text-blue-600">文字数・語数:</strong> 「3,000文字でまとめた」
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong class="text-cyan-600">時間・金額:</strong> 「10分で理解」「100万円相当」
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ベネフィットの明確化 -->
+                    <div class="bg-gradient-to-br from-emerald-50 to-green-50 p-6 rounded-xl card-hover">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                            <span class="text-2xl">🌟</span>
+                            5. ベネフィットの明確化
+                        </h3>
+                        <p class="text-slate-600 mb-4"><strong>目的:</strong> ユーザーが得られる具体的な未来像を描く</p>
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong class="text-emerald-600">現在の問題:</strong> ユーザーが抱える課題
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong class="text-green-600">理想の未来:</strong> 問題解決後の状態
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 視覚的コンテンツ -->
+                    <div class="bg-gradient-to-br from-pink-50 to-rose-50 p-6 rounded-xl card-hover">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                            <span class="text-2xl">🎨</span>
+                            6. 視覚的コンテンツ
+                        </h3>
+                        <p class="text-slate-600 mb-4"><strong>目的:</strong> テキストでは伝わりにくい情報を視覚的に訴求</p>
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong class="text-pink-600">画面キャプチャ:</strong> 実際の操作画面
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <strong class="text-rose-600">比較・グラフィック:</strong> Before/After、データ図解
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process" class="section-content section-inactive">
+            <div class="bg-white rounded-xl p-8 shadow-lg mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                    <span class="text-sky-500">🔄</span>
+                    ポスト作成プロセス
+                </h2>
+
+                <div class="space-y-8">
+                    <!-- 事前リサーチ -->
+                    <div class="border-l-4 border-sky-500 pl-6">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-4">1. 事前リサーチ（継続的）</h3>
+                        <p class="text-slate-600 mb-4">市場トレンドと効果的なパターンの把握</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div class="bg-sky-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-slate-800 mb-2">📈 リサーチ対象</h4>
+                                <ul class="text-sm text-slate-600 space-y-1">
+                                    <li>• 高エンゲージメント投稿</li>
+                                    <li>• フォロワー比インプレッション高投稿</li>
+                                    <li>• キャンペーン成功事例</li>
+                                    <li>• 業界トレンド投稿</li>
+                                </ul>
+                            </div>
+                            <div class="bg-sky-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-slate-800 mb-2">📋 リサーチ手順</h4>
+                                <ol class="text-sm text-slate-600 space-y-1">
+                                    <li>1. 週次トレンド投稿収集</li>
+                                    <li>2. エンゲージメント指標記録</li>
+                                    <li>3. 成功パターン分析・分類</li>
+                                    <li>4. 自社適用可能性検討</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ベースコンテンツ選定 -->
+                    <div class="border-l-4 border-green-500 pl-6">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-4">2. ベースコンテンツの選定</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+                            <div class="bg-green-50 p-3 rounded-lg text-center">
+                                <div class="text-green-600 font-semibold mb-1">エンゲージメント率</div>
+                                <div class="text-sm text-slate-600">高い</div>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg text-center">
+                                <div class="text-green-600 font-semibold mb-1">ターゲット層</div>
+                                <div class="text-sm text-slate-600">重複する</div>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg text-center">
+                                <div class="text-green-600 font-semibold mb-1">アプローチ</div>
+                                <div class="text-sm text-slate-600">参考になる</div>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg text-center">
+                                <div class="text-green-600 font-semibold mb-1">倫理性</div>
+                                <div class="text-sm text-slate-600">問題がない</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- コンテンツ適応・改良 -->
+                    <div class="border-l-4 border-purple-500 pl-6">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-4">3. コンテンツの適応・改良</h3>
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                                <div class="text-center">
+                                    <div class="text-2xl mb-2">🔍</div>
+                                    <div class="font-semibold text-slate-800">構造分析</div>
+                                    <div class="text-sm text-slate-600">ベースコンテンツの要素を分解</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl mb-2">🔄</div>
+                                    <div class="font-semibold text-slate-800">文脈翻案</div>
+                                    <div class="text-sm text-slate-600">自社の文脈に合わせて調整</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl mb-2">⚙️</div>
+                                    <div class="font-semibold text-slate-800">フレームワーク適用</div>
+                                    <div class="text-sm text-slate-600">6要素を組み込み</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl mb-2">✨</div>
+                                    <div class="font-semibold text-slate-800">オリジナリティ追加</div>
+                                    <div class="text-sm text-slate-600">独自性と価値を付与</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Templates Section -->
+        <section id="templates" class="section-content section-inactive">
+            <div class="bg-white rounded-xl p-8 shadow-lg mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                    <span class="text-sky-500">📝</span>
+                    テンプレート集
+                </h2>
+
+                <div class="mb-6">
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="showTemplate('hook')" class="template-tab-btn bg-sky-500 text-white px-4 py-2 rounded-lg font-medium text-sm transition-all">フック型</button>
+                        <button onclick="showTemplate('dissonance')" class="template-tab-btn hover:bg-slate-100 px-4 py-2 rounded-lg font-medium text-sm transition-all">違和感型</button>
+                        <button onclick="showTemplate('value')" class="template-tab-btn hover:bg-slate-100 px-4 py-2 rounded-lg font-medium text-sm transition-all">価値訴求型</button>
+                    </div>
+                </div>
+
+                <div id="hook-templates" class="template-content">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-4">🎣 フック型テンプレート</h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-slate-50 p-6 rounded-xl">
+                            <h4 class="font-semibold text-slate-800 mb-3">緊急性テンプレート</h4>
+                            <div class="template-text">【緊急】[分野]で[問題]が発生中
+
+この状況の原因：
+• [原因1]
+• [原因2]
+• [原因3]
+
+対策をしないと[悪い結果]になる可能性が...
+
+詳細は続きで👇
+
+#[関連ハッシュタグ]</div>
+                            <button onclick="copyToClipboard(this)" class="mt-3 bg-sky-500 text-white px-3 py-1 rounded text-sm hover:bg-sky-600 transition-colors">📋 コピー</button>
+                        </div>
+
+                        <div class="bg-slate-50 p-6 rounded-xl">
+                            <h4 class="font-semibold text-slate-800 mb-3">希少性テンプレート</h4>
+                            <div class="template-text">【削除予定】[業界]の[秘密情報]を公開
+
+通常は[金額]で販売している内容ですが、
+[期限]まで無料で公開します。
+
+内容：
+✅ [価値1]
+✅ [価値2]  
+✅ [価値3]
+
+[行動を促す文言]
+
+#[関連ハッシュタグ]</div>
+                            <button onclick="copyToClipboard(this)" class="mt-3 bg-sky-500 text-white px-3 py-1 rounded text-sm hover:bg-sky-600 transition-colors">📋 コピー</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="dissonance-templates" class="template-content hidden">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-4">⚡ 違和感型テンプレート</h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-slate-50 p-6 rounded-xl">
+                            <h4 class="font-semibold text-slate-800 mb-3">逆説的表現テンプレート</h4>
+                            <div class="template-text">[一般的に良いこと]のせいで[困った状況]になっています...
+
+なぜこんなことに？
+
+理由：
+• [理由1]
+• [理由2]
+• [理由3]
+
+同じ経験をした方、いませんか？
+解決策をシェアします👇
+
+#[関連ハッシュタグ]</div>
+                            <button onclick="copyToClipboard(this)" class="mt-3 bg-sky-500 text-white px-3 py-1 rounded text-sm hover:bg-sky-600 transition-colors">📋 コピー</button>
+                        </div>
+
+                        <div class="bg-slate-50 p-6 rounded-xl">
+                            <h4 class="font-semibold text-slate-800 mb-3">意外性テンプレート</h4>
+                            <div class="template-text">[成功]したら[予想外の問題]が発生しました
+
+期待していたのは：
+• [期待1]
+• [期待2]
+
+実際に起こったのは：
+• [現実1]
+• [現実2]
+
+これから[分野]を始める方に伝えたいこと👇
+
+#[関連ハッシュタグ]</div>
+                            <button onclick="copyToClipboard(this)" class="mt-3 bg-sky-500 text-white px-3 py-1 rounded text-sm hover:bg-sky-600 transition-colors">📋 コピー</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="value-templates" class="template-content hidden">
+                    <h3 class="text-xl font-semibold text-slate-800 mb-4">📊 価値訴求型テンプレート</h3>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="bg-slate-50 p-6 rounded-xl">
+                            <h4 class="font-semibold text-slate-800 mb-3">数値訴求テンプレート</h4>
+                            <div class="template-text">[数値]で完全解説！[テーマ]の全て
+
+📊 調査結果：
+• データ1: [具体的数値]
+• データ2: [具体的数値]
+• データ3: [具体的数値]
+
+[時間]で[結果]を出すための
+実践的な方法をまとめました👇
+
+#[関連ハッシュタグ]</div>
+                            <button onclick="copyToClipboard(this)" class="mt-3 bg-sky-500 text-white px-3 py-1 rounded text-sm hover:bg-sky-600 transition-colors">📋 コピー</button>
+                        </div>
+
+                        <div class="bg-slate-50 p-6 rounded-xl">
+                            <h4 class="font-semibold text-slate-800 mb-3">ボリューム訴求テンプレート</h4>
+                            <div class="template-text">[金額]相当の[情報/ノウハウ]を無料公開
+
+通常なら：
+💰 コンサル料: [金額]
+💰 教材費: [金額]
+💰 時間価値: [金額]
+
+総額[合計金額]分の内容を
+[文字数]でまとめました
+
+[行動を促す文言]👇
+
+#[関連ハッシュタグ]</div>
+                            <button onclick="copyToClipboard(this)" class="mt-3 bg-sky-500 text-white px-3 py-1 rounded text-sm hover:bg-sky-600 transition-colors">📋 コピー</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Measurement Section -->
+        <section id="measurement" class="section-content section-inactive">
+            <div class="bg-white rounded-xl p-8 shadow-lg mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                    <span class="text-sky-500">📈</span>
+                    効果測定と改善
+                </h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                    <!-- KPI設定 -->
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl">
+                        <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                            <span class="text-xl">🎯</span>
+                            KPI設定
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded-lg">
+                                <div class="font-medium text-blue-600">インプレッション数</div>
+                                <div class="text-sm text-slate-600">リーチの測定</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <div class="font-medium text-indigo-600">エンゲージメント率</div>
+                                <div class="text-sm text-slate-600">(いいね+リポスト+返信)÷インプレッション</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <div class="font-medium text-purple-600">フォロワー増加数</div>
+                                <div class="text-sm text-slate-600">ブランド認知向上の指標</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <div class="font-medium text-pink-600">クリック率</div>
+                                <div class="text-sm text-slate-600">外部誘導の効果測定</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- A/Bテスト -->
+                    <div class="bg-gradient-to-br from-green-50 to-teal-50 p-6 rounded-xl">
+                        <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                            <span class="text-xl">🧪</span>
+                            A/Bテスト要素
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded-lg">
+                                <div class="font-medium text-green-600">フックの表現方法</div>
+                                <div class="text-sm text-slate-600">緊急性 vs 希少性</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <div class="font-medium text-teal-600">投稿時間帯</div>
+                                <div class="text-sm text-slate-600">朝・昼・夜の比較</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <div class="font-medium text-cyan-600">画像の有無・種類</div>
+                                <div class="text-sm text-slate-600">テキストのみ vs ビジュアル</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <div class="font-medium text-blue-600">ハッシュタグ</div>
+                                <div class="text-sm text-slate-600">組み合わせの最適化</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 継続的改善 -->
+                    <div class="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-xl">
+                        <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                            <span class="text-xl">🔄</span>
+                            継続的改善
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded-lg">
+                                <div class="font-medium text-orange-600">週次分析</div>
+                                <div class="text-sm text-slate-600">パフォーマンス評価</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <div class="font-medium text-red-600">パターン抽象化</div>
+                                <div class="text-sm text-slate-600">成功要因の文書化</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <div class="font-medium text-pink-600">失敗要因特定</div>
+                                <div class="text-sm text-slate-600">回避策の策定</div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg">
+                                <div class="font-medium text-purple-600">フレームワーク更新</div>
+                                <div class="text-sm text-slate-600">学習内容の反映</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guidelines Section -->
+        <section id="guidelines" class="section-content section-inactive">
+            <div class="bg-white rounded-xl p-8 shadow-lg mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+                    <span class="text-sky-500">⚖️</span>
+                    注意事項とガイドライン
+                </h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- コンプライアンス -->
+                    <div class="space-y-6">
+                        <div class="bg-gradient-to-br from-red-50 to-orange-50 p-6 rounded-xl">
+                            <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                                <span class="text-xl">🛡️</span>
+                                コンプライアンス
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-red-500 text-lg">✓</span>
+                                    <div>
+                                        <div class="font-medium text-slate-800">事実に基づく情報発信</div>
+                                        <div class="text-sm text-slate-600">誇張や虚偽の情報は避ける</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-orange-500 text-lg">✓</span>
+                                    <div>
+                                        <div class="font-medium text-slate-800">誇大広告の回避</div>
+                                        <div class="text-sm text-slate-600">現実的で検証可能な表現を使用</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-yellow-500 text-lg">✓</span>
+                                    <div>
+                                        <div class="font-medium text-slate-800">著作権・肖像権の尊重</div>
+                                        <div class="text-sm text-slate-600">他者のコンテンツの適切な取り扱い</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-green-500 text-lg">✓</span>
+                                    <div>
+                                        <div class="font-medium text-slate-800">プラットフォームガイドライン遵守</div>
+                                        <div class="text-sm text-slate-600">Xの利用規約とポリシーに準拠</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ブランドイメージ -->
+                    <div class="space-y-6">
+                        <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-xl">
+                            <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                                <span class="text-xl">🎨</span>
+                                ブランドイメージ
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-blue-500 text-lg">✓</span>
+                                    <div>
+                                        <div class="font-medium text-slate-800">一貫したトーン&マナー</div>
+                                        <div class="text-sm text-slate-600">ブランド個性の統一</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-indigo-500 text-lg">✓</span>
+                                    <div>
+                                        <div class="font-medium text-slate-800">ターゲット層に適した表現</div>
+                                        <div class="text-sm text-slate-600">読者に合わせた言葉選び</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="text-purple-500 text-lg">✓</span>
+                                    <div>
+                                        <div class="font-medium text-slate-800">長期的なブランド価値への配慮</div>
+                                        <div class="text-sm text-slate-600">短期的な注目より持続的な信頼</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 実践のポイント -->
+                <div class="mt-8 bg-gradient-to-r from-sky-50 to-blue-50 p-6 rounded-xl">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="text-xl">💡</span>
+                        実践のポイント
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="space-y-2">
+                            <div class="font-medium text-slate-800">✅ 推奨事項</div>
+                            <ul class="text-sm text-slate-600 space-y-1">
+                                <li>• 継続的な市場リサーチ</li>
+                                <li>• 定期的なパフォーマンス分析</li>
+                                <li>• ユーザーとの誠実な対話</li>
+                                <li>• 価値提供を最優先</li>
+                            </ul>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="font-medium text-slate-800">❌ 避けるべき事項</div>
+                            <ul class="text-sm text-slate-600 space-y-1">
+                                <li>• 煽り目的のみの投稿</li>
+                                <li>• 根拠のない断定的表現</li>
+                                <li>• 他者を貶める内容</li>
+                                <li>• プライバシー侵害</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <div class="fixed bottom-6 right-6 z-20">
+            <div class="bg-white rounded-full shadow-lg p-3">
+                <button onclick="scrollToTop()" class="bg-sky-500 text-white p-3 rounded-full hover:bg-sky-600 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 py-8 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-slate-500 mb-2">© 2024 Xポスト作成運用マニュアル | Created for educational purposes</p>
+            <p class="text-slate-400 text-sm">このマニュアルを活用して、継続的に高品質なXポストを作成し、エンゲージメントの向上を図ってください。</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                section.classList.remove('section-active');
+                section.classList.add('section-inactive');
+            });
+
+            // Show selected section
+            const targetSection = document.getElementById(sectionId);
+            targetSection.classList.remove('section-inactive');
+            targetSection.classList.add('section-active');
+
+            // Update navigation buttons
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('nav-active');
+            });
+            event.target.classList.add('nav-active');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Template tab functionality
+        function showTemplate(templateType) {
+            // Hide all template contents
+            const templates = document.querySelectorAll('.template-content');
+            templates.forEach(template => {
+                template.classList.add('hidden');
+            });
+
+            // Show selected template
+            const targetTemplate = document.getElementById(templateType + '-templates');
+            targetTemplate.classList.remove('hidden');
+
+            // Update template tab buttons
+            const tabButtons = document.querySelectorAll('.template-tab-btn');
+            tabButtons.forEach(btn => {
+                btn.classList.remove('bg-sky-500', 'text-white');
+                btn.classList.add('hover:bg-slate-100');
+            });
+            event.target.classList.add('bg-sky-500', 'text-white');
+            event.target.classList.remove('hover:bg-slate-100');
+        }
+
+        // Copy to clipboard functionality
+        function copyToClipboard(button) {
+            const templateText = button.previousElementSibling.textContent;
+            navigator.clipboard.writeText(templateText).then(() => {
+                // Visual feedback
+                const originalText = button.innerHTML;
+                button.innerHTML = '✅ コピー完了！';
+                button.classList.add('copy-success');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.classList.remove('copy-success');
+                }, 2000);
+            }).catch(err => {
+                console.error('コピーに失敗しました: ', err);
+                alert('コピーに失敗しました。手動でコピーしてください。');
+            });
+        }
+
+        // Scroll to top functionality
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Smooth scrolling for anchor links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if there's a hash in the URL and show the corresponding section
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                showSection(hash);
+            }
+        });
+    </script>
+
+</body>
+</html> 

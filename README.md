@@ -14,14 +14,24 @@
 ## 📂 ツール・プレゼンテーション一覧
 
 ### 🎨 [ランディングページ](https://kento-nakai-ai.github.io/x-algorithm/)
-- 6つのツール・プレゼンテーションへのエントリーポイント
+- 8つのツール・プレゼンテーションへのエントリーポイント
 - レスポンシブデザインで美しいカード形式
 
-### 📊 [𝕏最新アルゴリズム解説](https://kento-nakai-ai.github.io/x-algorithm/algorithm/)
+### 📊 [𝕏最新アルゴリズム解説](https://kento-nakai-ai.github.io/x-algorithm/pages/algorithm-index.html)
 - **10枚の詳細スライド**でアルゴリズムを徹底解説
 - **Gemini AI機能**搭載でリアルタイムツイート生成
 - **チーズバーガー戦略**を含む4大トレンド解説
 - アカウントのポテンシャルを最大化する戦略
+
+### 📝 [Xポスト作成運用マニュアル](https://kento-nakai-ai.github.io/x-algorithm/pages/x-post-creation-manual.html)
+- **6要素フレームワーク**による高エンゲージメント投稿の体系化
+- **心理学的アプローチ**と**データドリブン手法**の融合
+- **実用的テンプレート集**でワンクリックコピー機能
+- **効果測定・A/Bテスト**による継続的改善サポート
+
+### 🧵 [AI系スレッド構文分析](https://kento-nakai-ai.github.io/x-algorithm/pages/ai-thread-strategy.html)
+- 効果的なスレッド投稿のための戦略ガイド
+- AI関連コンテンツに特化した構文分析
 
 ### 🤖 [わど@AI界隈のマスコット アクションプラン](https://kento-nakai-ai.github.io/x-algorithm/action-plans/wado/)
 - **2025年最新アルゴリズム対応**のわど専用運用戦略
@@ -47,7 +57,7 @@
 - **Grok AI時代の質重視**＋エンゲージメント品質向上
 - **8/31まで400人達成**を目指すデータドリブン戦略
 
-### 🍔 [チーズバーガー戦略](https://kento-nakai-ai.github.io/x-algorithm/algorithm/cheeseburger-action-plan.html)
+### 🍔 [チーズバーガー戦略](https://kento-nakai-ai.github.io/x-algorithm/pages/cheeseburger-action-plan.html)
 - **横展開で安定成長**を実現する実証済み戦略
 - **3フェーズ実行プラン**（準備・分析→交流圏構築→本格運用）
 - **インタラクティブ進捗管理**機能で毎日の実行をサポート
@@ -87,9 +97,22 @@
 /
 ├── index.html                    # ランディングページ
 ├── README.md
-├── algorithm/                    # アルゴリズム解説
-│   └── index.html
-├── action-plans/                 # アクションプラン群
+├── pages/                        # 📄 全HTMLページ
+│   ├── x-post-creation-manual.html  # Xポスト作成運用マニュアル
+│   ├── ai-thread-strategy.html      # AI系スレッド構文分析
+│   ├── algorithm-index.html         # アルゴリズム解説
+│   └── cheeseburger-action-plan.html # チーズバーガー戦略
+├── strategies/                   # 📋 戦略関連ドキュメント
+│   ├── ai-thread-posting-strategy.md
+│   ├── wado-ai-account-strategy.md
+│   ├── cheeseburger-strategy.md
+│   └── nakai-kento-x-strategy.md
+├── manuals/                      # 📖 マニュアル・ガイド
+│   ├── x-post-creation-manual.md
+│   ├── x-algorithm-guide.md
+│   ├── x-algorithm-optimization.md
+│   └── nakai-kento-action-plan.md
+├── action-plans/                 # 🎯 アクションプラン群
 │   ├── wado/                     # わど専用アクションプラン
 │   │   └── index.html
 │   ├── nakai-kento/              # なかいけんと専用運用ツール
@@ -100,13 +123,12 @@
 │   │   └── index.html
 │   └── august/                   # 8月集客プラン
 │       └── index.html
-├── assets/                       # 共通リソース
-│   ├── css/
-│   │   └── common.css
-│   ├── js/
-│   │   └── common.js
-│   └── images/
-└── docs/                         # ドキュメント（将来拡張用）
+└── assets/                       # 🎨 共通リソース
+    ├── css/
+    │   └── common.css
+    ├── js/
+    │   └── common.js
+    └── images/
 ```
 
 ## 📖 各プレゼンテーションの構成
@@ -282,6 +304,11 @@ const apiKey = "YOUR_GEMINI_API_KEY_HERE";
 
 ## 📝 更新履歴
 
+- **2025.01** - **ディレクトリ構造整理 & Xポスト作成運用マニュアル追加**
+  - **コンテンツタイプ別ディレクトリ整理**：pages/（HTML）、strategies/（戦略）、manuals/（マニュアル）に分類
+  - **Xポスト作成運用マニュアル**追加：6要素フレームワーク、テンプレート集、効果測定ガイド
+  - **AI系スレッド構文分析**追加：効果的なスレッド投稿戦略
+  - **8つのツール・プレゼンテーション構成**に拡張、保守性とスケーラビリティを向上
 - **2025.01** - **チーズバーガー戦略ページ追加**：メインランディングページからのアクセス対応
   - インタラクティブ進捗管理機能付きの詳細実行プラン
   - 3フェーズ構造（準備・分析→交流圏構築→本格運用）で段階的成長をサポート
