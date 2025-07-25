@@ -1,0 +1,100 @@
+/* 共通フォント設定 */
+body {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* スライド共通スタイル */
+.slide {
+    display: none;
+    animation: fadeIn 0.5s;
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.slide.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-container {
+    width: 100%;
+    max-width: 1024px;
+    height: 85vh;
+    box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* スクロールバーのスタイル */
+.overflow-y-auto::-webkit-scrollbar {
+    width: 8px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* テーブルコンテナ */
+.table-container {
+    max-height: 400px;
+    overflow: auto;
+}
+
+/* ツイートプレビュー（アルゴリズム解説用） */
+.tweet-preview {
+    border: 1px solid #e5e7eb;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    margin-top: 1rem;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Gemini機能用のスタイル（アルゴリズム解説用） */
+.gemini-btn {
+    background: linear-gradient(135deg, #4285F4, #9B59B6, #F4B400, #0F9D58);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* カード型ホバー効果（ランディングページ用） */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -8px rgb(0 0 0 / 0.2);
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+    .slide-container {
+        height: 90vh;
+    }
+    
+    .slide {
+        padding: 0.5rem 0;
+    }
+} 

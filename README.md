@@ -17,17 +17,17 @@
 - 3つのプレゼンテーションへのエントリーポイント
 - レスポンシブデザインで美しいカード形式
 
-### 📊 [𝕏最新アルゴリズム解説](https://kento-nakai-ai.github.io/x-algorithm/x-algorithm-original.html)
+### 📊 [𝕏最新アルゴリズム解説](https://kento-nakai-ai.github.io/x-algorithm/algorithm/)
 - **10枚の詳細スライド**でアルゴリズムを徹底解説
 - **Gemini AI機能**搭載でリアルタイムツイート生成
 - アカウントのポテンシャルを最大化する戦略
 
-### 🚀 [7月集客アクションプラン](https://kento-nakai-ai.github.io/x-algorithm/7-x-actions.html)
+### 🚀 [7月集客アクションプラン](https://kento-nakai-ai.github.io/x-algorithm/action-plans/july/)
 - **7/31まで300人達成**を目指す高密度プラン
 - 日々のコントロール可能なタスクの積み重ね
 - GIVEAWAY企画でのラストスパート戦略
 
-### 📈 [8月集客アクションプラン](https://kento-nakai-ai.github.io/x-algorithm/8-x-actions.html)
+### 📈 [8月集客アクションプラン](https://kento-nakai-ai.github.io/x-algorithm/action-plans/august/)
 - **8/31まで400人達成**を目指す持続的成長戦略
 - 2フェーズ戦略（基盤構築期→成長・拡大期）
 - 週次テーマによる計画的なコンテンツ投稿
@@ -57,6 +57,28 @@
 - **JavaScript (ES6+)** - モダンな非同期処理
 - **Google Gemini API** - AI機能統合（アルゴリズム解説のみ）
 - **Google Fonts** - Inter & Noto Sans JP
+
+## 📁 プロジェクト構造
+
+```
+/
+├── index.html                    # ランディングページ
+├── README.md
+├── algorithm/                    # アルゴリズム解説
+│   └── index.html
+├── action-plans/                 # アクションプラン群
+│   ├── july/
+│   │   └── index.html
+│   └── august/
+│       └── index.html
+├── assets/                       # 共通リソース
+│   ├── css/
+│   │   └── common.css
+│   ├── js/
+│   │   └── common.js
+│   └── images/
+└── docs/                         # ドキュメント（将来拡張用）
+```
 
 ## 📖 各プレゼンテーションの構成
 
@@ -128,7 +150,7 @@ npx serve .
 
 ### Gemini AI機能の設定
 ```javascript
-// x-algorithm-original.html の該当箇所を編集
+// algorithm/index.html の該当箇所を編集
 const apiKey = "YOUR_GEMINI_API_KEY_HERE";
 ```
 
@@ -207,6 +229,7 @@ const apiKey = "YOUR_GEMINI_API_KEY_HERE";
 
 ## 📝 更新履歴
 
+- **2024.XX** - プロジェクト構造を最適化、ディレクトリ別に整理、共通CSSとJSを追加
 - **2024.XX** - スライドのスクロール問題を修正、Gemini出力エリアの表示改善
 - **2024.XX** - 8月集客アクションプランを追加
 - **2024.XX** - 7月集客アクションプランを追加
